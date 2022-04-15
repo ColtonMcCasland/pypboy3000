@@ -1,0 +1,7 @@
+*.pyc
+.project
+.pydevproject
+.settings
+lib
+# *.mp3
+# *.ogg

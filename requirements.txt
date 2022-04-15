@@ -1,0 +1,5 @@
+pygame
+requests
+xmltodict
+numpy
+confuse
