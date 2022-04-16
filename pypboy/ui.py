@@ -20,25 +20,25 @@ class Header(game.Entity):
         new_date = datetime.datetime.now().strftime("%d.%m.%y.%H:%M:%S") #need to be moved to footer and under the data and maps section
         if new_date != self._date:
             self.image.fill((0, 0, 0))
-            pygame.draw.line(self.image, (95, 255, 177), (5, 15), (5, 35), 2)
+            pygame.draw.line(self.image, config.TINTCOLOUR, (5, 15), (5, 35), 2)
             #pygame.draw.line(self.image, (95, 255, 177), (5, 15), (config.WIDTH - 154, 15), 2)
-            pygame.draw.line(self.image, (95, 255, 177), (config.WIDTH - 148, 15), (config.WIDTH - 13, 15), 2)
-            pygame.draw.line(self.image, (95, 255, 177), (config.WIDTH - 13, 15), (config.WIDTH - 13, 35), 2)
+            pygame.draw.line(self.image, config.TINTCOLOUR, (config.WIDTH - 148, 15), (config.WIDTH - 13, 15), 2)
+            pygame.draw.line(self.image, config.TINTCOLOUR, (config.WIDTH - 13, 15), (config.WIDTH - 13, 35), 2)
 
 
-            text = config.FONTS[14].render(self._date, True, (95, 255, 177), (0, 0, 0))
+            text = config.FONTS[14].render(self._date, True, config.TINTCOLOUR, (0, 0, 0))
             self.image.blit(text, ((config.WIDTH - 141), 19))
             headerposcount = 146
             for section in self.title:
                 headerposcount = headerposcount + 8
                 headerposcount_old = headerposcount
-                text = config.FONTS[14].render(section, True, (95, 255, 177), (0, 0, 0))
-                pygame.draw.line(self.image, (95, 255, 177), (config.WIDTH - headerposcount, 15), (config.WIDTH - headerposcount, 35), 2)	#End of title Verticle bar
+                text = config.FONTS[14].render(section, True, config.TINTCOLOUR, (0, 0, 0))
+                pygame.draw.line(self.image, config.TINTCOLOUR, (config.WIDTH - headerposcount, 15), (config.WIDTH - headerposcount, 35), 2)	#End of title Verticle bar
                 headerposcount = headerposcount + text.get_width() + 5
                 self.image.blit(text, (config.WIDTH - headerposcount, 19))
-                pygame.draw.line(self.image, (95, 255, 177), (config.WIDTH - headerposcount, 15), (config.WIDTH - headerposcount_old, 15), 2) # Horizontal Bar
-            pygame.draw.line(self.image, (95, 255, 177), (5, 15), (config.WIDTH - headerposcount, 15), 2) # Horizontal Bar
-            text = config.FONTS[14].render("  %s  " % self.headline, True, (105, 251, 187), (0, 0, 0))
+                pygame.draw.line(self.image, config.TINTCOLOUR, (config.WIDTH - headerposcount, 15), (config.WIDTH - headerposcount_old, 15), 2) # Horizontal Bar
+            pygame.draw.line(self.image, config.TINTCOLOUR, (5, 15), (config.WIDTH - headerposcount, 15), 2) # Horizontal Bar
+            text = config.FONTS[14].render("  %s  " % self.headline, True, config.TINTCOLOUR, (0, 0, 0))
             self.image.blit(text, (26, 8))
             self._date = new_date
             

@@ -34,7 +34,7 @@ class Module(pypboy.SubModule):
         self.stat.rect = self.stat.image.get_rect()
         self.stat.rect[0] = 100
         self.stat.rect[1] = 0
-        self.stat.image = self.stat.image.convert_alpha()
+        self.stat.image = self.stat.image.convert()
 
     def show_str(self):
         self.changeStat('images/special_strength.png')
@@ -69,4 +69,4 @@ class Stat(game.Entity):
         super(Stat, self).__init__()
         self.image = pygame.image.load(imageUrl)
         self.rect = self.image.get_rect()
-        self.image = self.image.convert_alpha()
+        self.image = self.image.convert()
