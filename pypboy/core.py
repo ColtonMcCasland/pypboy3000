@@ -31,7 +31,7 @@ class Pypboy(game.core.Engine):
         self.background = pygame.image.load('images/overlay.png')
         # border = pypboy.ui.Border()
         # self.root_children.add(border)
-        scanlines = pypboy.ui.Scanlines(800, 480, 3, 1, [(0, 13, 3, 50), (6, 42, 22, 100), (0, 13, 3, 50)])
+        scanlines = pypboy.ui.Scanlines(800, 480, 3, 1, [(0, 13, 3, 50), (6, 42, 22, 100), (0, 13, 3, 50)],)
         self.root_children.add(scanlines)
         scanlines2 = pypboy.ui.Scanlines(800, 480, 8, 40, [(0, 10, 1, 0), (21, 62, 42, 90), (61, 122, 82, 100), (21, 62, 42, 90)] + [(0, 10, 1, 0) for x in range(50)], True)
         self.root_children.add(scanlines2)
@@ -81,21 +81,21 @@ class Pypboy(game.core.Engine):
         else:
             print("Module '%s' not implemented." % module)
 
-    def handle_swipe(self, swipe):
-        if swipe == -1:
-            return
-        if swipe == 4: #UP
-            self.currentModule += 1
-            if self.currentModule > 2:
-                self.currentModule = 0
-            self.switch_module(config.MODULES[self.currentModule])
-        elif swipe == 3: #DOWN
-            self.currentModule -= 1
-            if self.currentModule < 0:
-                self.currentModule = 2
-            self.switch_module(config.MODULES[self.currentModule])
-        else:
-            self.active.handle_swipe(swipe)
+    # def handle_swipe(self, swipe):
+    #     if swipe == -1:
+    #         return
+    #     if swipe == 4: #UP
+    #         self.currentModule += 1
+    #         if self.currentModule > 2:
+    #             self.currentModule = 0
+    #         self.switch_module(config.MODULES[self.currentModule])
+    #     elif swipe == 3: #DOWN
+    #         self.currentModule -= 1
+    #         if self.currentModule < 0:
+    #             self.currentModule = 2
+    #         self.switch_module(config.MODULES[self.currentModule])
+    #     else:
+    #         self.active.handle_swipe(swipe)
 
     def handle_action(self, action):
         if action.startswith('module_'):
@@ -125,7 +125,7 @@ class Pypboy(game.core.Engine):
             self.mouseUpPos = pygame.mouse.get_pos()
             swipe = self.getSwipeType2()
             #swipe = self.getSwipeType()
-            self.handle_swipe(swipe)
+            # self.handle_swipe(swipe)
             self.mouseDownTime = 0
         else:
             if hasattr(self, 'active'):

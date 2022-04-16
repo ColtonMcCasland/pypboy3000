@@ -186,7 +186,7 @@ class Overlay(game.Entity):
     def blit_alpha(self, target, source, location, opacity):
         x = location[0]
         y = location[1]
-        temp = pygame.Surface((source.get_width(), source.get_height())).convert()
+        temp = pygame.Surface((source.get_width(), source.get_height())).convert_alpha()
         temp.blit(target, (-x, -y))
         temp.blit(source, (0, 0))
         temp.set_alpha(opacity)

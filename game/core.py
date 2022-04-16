@@ -17,7 +17,7 @@ class Engine(object):
 
         self.groups = []
         self.root_children = EntityGroup()
-        self.background = pygame.surface.Surface(self.screen.get_size()).convert()
+        self.background = pygame.surface.Surface(self.screen.get_size()).convert_alpha()
         self.background.fill((0, 0, 0))
 
         self.rescale = False
@@ -68,7 +68,7 @@ class Entity(pygame.sprite.DirtySprite):
         super(Entity, self).__init__(*args, **kwargs)
         self.image = pygame.surface.Surface(dimensions)
         self.rect = self.image.get_rect()
-        self.image = self.image.convert()
+        self.image = self.image.convert_alpha()
         self.groups = pygame.sprite.LayeredDirty()
         self.layer = layer
         self.dirty = 2

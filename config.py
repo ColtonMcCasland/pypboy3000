@@ -21,6 +21,7 @@ MAP_FOCUS = (-92.1943197, 38.5653437)
 WORLD_MAP_FOCUS = 0.07 #Needed to handle the 50k node limit from OSM
 
 LOAD_CACHED_MAP = True
+SOUND_ENABLED = True
 
 EVENTS = {
     'SONG_END': pygame.USEREVENT + 1
@@ -65,6 +66,7 @@ GPIO_ACTIONS = {
 #    20: "knob_2", #GPIO 24
 #	25: "knob_3" #GPIO 23
 }
+TINTCOLOUR = pygame.Color (26, 255, 128) # Green
 
 
 MAP_ICONS = {
