@@ -115,6 +115,7 @@ class Menu(game.Entity):
                     self.dial_move_sfx.play()
                 self.select(self.selected + 1)
 
+
     def redraw(self):
         self.image.fill((0, 0, 0))
         offset = 5

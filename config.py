@@ -59,8 +59,8 @@ GPIO_ACTIONS = {
 #    16: "module_data", #GPIO 15
 #	18:	"knob_1", #GPIO 18 Do Not enable messes with the screen. 
 #	18: "knob_2", #GPIO 18 Turns screen off do not use
-#	7: "knob_3", #GPIO 7
-#	22: "knob_1", #GPIO 22
+	27: "knob_3", #GPIO 7
+	24: "knob_1", #GPIO 22
 #	22: "dial_down", #GPIO 22
 #	25: "dial_up", #GPIO 25
 #    20: "knob_2", #GPIO 24
