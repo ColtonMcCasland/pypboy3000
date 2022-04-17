@@ -70,6 +70,8 @@ class BaseModule(game.EntityGroup):
         super(BaseModule, self).render(interval)
 
     def handle_action(self, action, value=0):
+        # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
+
         if action.startswith("knob_"):
             num = int(action[-1])
             self.switch_submodule(num - 1)
