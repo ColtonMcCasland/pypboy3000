@@ -74,9 +74,11 @@ class BaseModule(game.EntityGroup):
         print( self.currentSubmodule)
 
         if action == ("knob_up"):
-            self.currentSubmodule += 1
+            num = int(self.currentSubmodule)
+            print(num)
+            self.switch_submodule(self.currentSubmodule + 1)
         elif action == ("knob_down"):
-            self.currentSubmodule -= 1
+            self.switch_submodule(self.currentSubmodule - 1)
         elif action in self.action_handlers:
             self.action_handlers[action]()
         else:
