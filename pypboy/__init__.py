@@ -7,6 +7,7 @@ from enum import Enum
 if config.GPIO_AVAILABLE:
     import RPi.GPIO as GPIO
 
+
 class GameState(Enum):
     RADIO = -3
     MAP = -2
@@ -14,17 +15,17 @@ class GameState(Enum):
     inv = 0
     STATS = 1
 
-class BaseModule(game.EntityGroup):
 
+class BaseModule(game.EntityGroup):
     submodules = []
     currentSubmodule = 0
 
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
 
-        #if config.GPIO_AVAILABLE:
-            #GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-            #GPIO.output(self.GPIO_LED_ID, False)
+        # if config.GPIO_AVAILABLE:
+        # GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+        # GPIO.output(self.GPIO_LED_ID, False)
 
         self.pypboy = boy
         self.position = (0, 40)
@@ -34,7 +35,7 @@ class BaseModule(game.EntityGroup):
         for mod in self.submodules:
             self.footer.menu.append(mod.label)
         self.footer.selected = self.footer.menu[0]
-        self.footer.position = (0, config.HEIGHT - 53) #80
+        self.footer.position = (0, config.HEIGHT - 53)  # 80
         self.add(self.footer)
 
         self.switch_submodule(0)
@@ -65,7 +66,7 @@ class BaseModule(game.EntityGroup):
         else:
             print("No submodule at %d" % module)
 
-    def render(self, interval): 
+    def render(self, interval):
         self.active.render(interval)
         super(BaseModule, self).render(interval)
 
@@ -73,19 +74,17 @@ class BaseModule(game.EntityGroup):
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
         print(self.currentSubmodule)
 
-
         if action.startswith("knob_"):
-           if action == "knob_up":
-               self.currentSubmodule += 1
-               if self.currentSubmodule < 0:
-                   self.currentSubmodule = self.submodules.__len__() + 1
-               self.switch_submodule(self.currentSubmodule)
-
-           if action == "knob_down":
-                   self.currentSubmodule -= 1
-                   if self.currentSubmodule < 0:
-                       self.currentSubmodule = self.submodules.__len__() - 1
-                   self.switch_submodule(self.currentSubmodule)
+            if action == "knob_up":
+                self.currentSubmodule += 1
+                if self.currentSubmodule < 0:
+                    self.currentSubmodule = self.submodules.__len__() + 1
+                self.switch_submodule(self.currentSubmodule)
+            elif action == "knob_down":
+                self.currentSubmodule -= 1
+                if self.currentSubmodule < 0:
+                    self.currentSubmodule = self.submodules.__len__() - 1
+                self.switch_submodule(self.currentSubmodule)
         elif action in self.action_handlers:
             self.action_handlers[action]()
         else:
@@ -96,20 +95,19 @@ class BaseModule(game.EntityGroup):
         if hasattr(self, 'active') and self.active:
             self.active.handle_event(event)
 
-
     def handle_pause(self):
         self.paused = True
         self.currentSubmodule = 0
         self.switch_submodule(0)
-        #if config.GPIO_AVAILABLE:
-            #GPIO.output(self.GPIO_LED_ID, False)
+        # if config.GPIO_AVAILABLE:
+        # GPIO.output(self.GPIO_LED_ID, False)
 
     def handle_resume(self):
         self.paused = False
         self.currentSubmodule = 0
         self.switch_submodule(0)
-        #if config.GPIO_AVAILABLE:
-            #GPIO.output(self.GPIO_LED_ID, True)
+        # if config.GPIO_AVAILABLE:
+        # GPIO.output(self.GPIO_LED_ID, True)
         if config.SOUND_ENABLED:
             self.module_change_sfx.play()
 
@@ -160,6 +158,6 @@ class SubModule(game.EntityGroup):
         self.paused = False
         if config.SOUND_ENABLED:
             self.submodule_change_sfx.play()
-    
+
     def handle_tap(self):
         pass
