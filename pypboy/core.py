@@ -101,7 +101,12 @@ class Pypboy(game.core.Engine):
 
     def handle_action(self, action):
         if action == "button_press":
-            self.switch_module(self.currentModule + 1)
+            if self.currentModule == "module_stats":
+             self.switch_module("module_items")
+            elif self.currentModule == "module_items":
+                self.switch_module("module_data")
+            elif self.currentModule == "module_data":
+                self.switch_module("module_stats")
         else:
             if hasattr(self, 'active'):
                 self.active.handle_action(action)
