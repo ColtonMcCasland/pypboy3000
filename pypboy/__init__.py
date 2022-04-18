@@ -73,13 +73,16 @@ class BaseModule(game.EntityGroup):
         self.active.render(interval)
         super(BaseModule, self).render(interval)
 
+    def button_callback(channel):
+        print("Button was pushed!")
+
     def handle_action(self, action, value=0):
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
         GPIO.setup(17, GPIO.IN,
                    pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-
-        if action.startswith("button_press"):
-            print("Button was pushed!")
+        GPIO.add_event_detect(17, GPIO.RISING, callback=self.button_callback)  # Setup event on pin 10 rising edge
+        # if GPIO.input(17) == GPIO.HIGH:
+        #     print("Button was pushed!")
         # if action.startswith("module_"):
         #     print('TESTING!!!')
 
@@ -106,6 +109,7 @@ class BaseModule(game.EntityGroup):
         else:
             if hasattr(self, 'active') and self.active:
                 self.active.handle_action(action, value)
+        GPIO.cleanup()  # Clean up
 
     def handle_event(self, event):
         if hasattr(self, 'active') and self.active:
