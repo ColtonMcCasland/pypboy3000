@@ -91,8 +91,10 @@ class BaseModule(game.EntityGroup):
         if action.startswith("knob_"):
             if (Switch_A == 1) and (Switch_B == 0):
                 self.currentSubmodule += 1
+                self.switch_submodule(self.currentSubmodule)
+
                 print
-                "direction -> ", counter
+                "direction -> ", self.currentSubmodule
                 while Switch_B == 0:
                     Switch_B = GPIO.input(Enc_B)
                 while Switch_B == 1:
@@ -101,8 +103,10 @@ class BaseModule(game.EntityGroup):
 
             elif (Switch_A == 1) and (Switch_B == 1):
                 self.currentSubmodule -= 1
+                self.switch_submodule(self.currentSubmodule)
+
                 print
-                "direction <- ", counter
+                "direction <- ", self.currentSubmodule
                 while Switch_A == 1:
                     Switch_A = GPIO.input(Enc_A)
                 return
