@@ -101,18 +101,18 @@ class BaseModule(game.EntityGroup):
 
 
     def handle_action(self, action, value=0):
-        Switch_A = GPIO.input(27)
-        Switch_B = GPIO.input(24)
+        down = GPIO.input(24)
+        up = GPIO.input(27)
 
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
         if action.startswith("knob_"):
-            if (Switch_A == 1) and (Switch_B == 0):
+            if (down == 1) and (up == 0):
                 self.currentSubmodule -= 1
                 if self.currentSubmodule < 0:
                     self.currentSubmodule = self.submodules.__len__() - 1
                 print('Down')
                 self.switch_submodule(self.currentSubmodule)
-            elif (Switch_A == 1) and (Switch_B == 1):
+            elif (down == 1) and (up == 1):
                 self.currentSubmodule += 1
                 if self.currentSubmodule >= self.submodules.__len__():
                     self.currentSubmodule = 0
