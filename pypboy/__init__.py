@@ -80,8 +80,8 @@ class BaseModule(game.EntityGroup):
     def handle_action(self, action, value=0):
         global counter
         sleep(0.002)
-        Enc_A = 24
-        Enc_B = 27
+        Enc_A = 27
+        Enc_B = 24
         GPIO.setup(Enc_A, GPIO.IN)
         GPIO.setup(Enc_B, GPIO.IN)
         Switch_A = GPIO.input(Enc_A)
