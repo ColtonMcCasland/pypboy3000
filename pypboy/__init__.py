@@ -76,6 +76,8 @@ class BaseModule(game.EntityGroup):
     def rotation_decode(self):
         global counter
         # sleep(0.002)
+        GPIO.setup(27, GPIO.IN)
+        GPIO.setup(24, GPIO.IN)
         Switch_A = GPIO.input(27)
         Switch_B = GPIO.input(24)
 
