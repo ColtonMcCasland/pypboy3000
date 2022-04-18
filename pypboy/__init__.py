@@ -78,7 +78,7 @@ class BaseModule(game.EntityGroup):
         GPIO.setup(17, GPIO.IN,
                    pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
-        if GPIO.input(17) == GPIO.HIGH:
+        if action.startswith("button_press"):
             print("Button was pushed!")
         # if action.startswith("module_"):
         #     print('TESTING!!!')
