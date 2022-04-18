@@ -78,6 +78,9 @@ class BaseModule(game.EntityGroup):
 
     def handle_action(self, action, value=0):
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
+        if action.startswith("module_"):
+            print('TESTING!!!')
+
 
 
         if action.startswith("knob_"):
