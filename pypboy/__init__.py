@@ -81,7 +81,7 @@ class BaseModule(game.EntityGroup):
         if action.startswith("knob_"):
             if action == "knob_up":
                 print('up')
-                if self.currentSubmodule > 0:
+                if self.currentSubmodule < 0:
                     print('up -reset')
                     self.currentSubmodule = self.submodules.__len__() - 1
                 else:
