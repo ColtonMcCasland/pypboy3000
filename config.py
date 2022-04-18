@@ -8,6 +8,7 @@ maxClick = 15
 longPressTime = 200
 touchScale = 1
 invertPosition = False
+GPIO_AVAILABLE = True
 
 # OUTPUT_WIDTH = 320
 # OUTPUT_HEIGHT = 240

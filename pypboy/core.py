@@ -48,11 +48,13 @@ class Pypboy(game.core.Engine):
             module.move(4, 40)
         self.switch_module("stats")
 
-    def init_gpio_controls(self):
-        for pin in config.GPIO_ACTIONS.keys():
-            print("Intialising pin %s as action '%s'" % (pin, config.GPIO_ACTIONS[pin]))
-            GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-            self.gpio_actions[pin] = config.GPIO_ACTIONS[pin]
+    # def init_gpio_controls(self):
+    #     for pin in config.GPIO_ACTIONS.keys():
+    #         print("Intialising pin %s as action '%s'" % (pin, config.GPIO_ACTIONS[pin]))
+    #
+    #         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # error
+    #
+    #         self.gpio_actions[pin] = config.GPIO_ACTIONS[pin]
 
     def check_gpio_input(self):
         for pin in self.gpio_actions.keys():

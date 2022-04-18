@@ -12,7 +12,7 @@ options, args = parser.parse_args()
 
 try:
     import RPi.GPIO as GPIO
-    # GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BCM)
     config.GPIO_AVAILABLE = True
 except Exception:
     _, err, _ = sys.exc_info()
