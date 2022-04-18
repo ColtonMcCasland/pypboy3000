@@ -26,9 +26,9 @@ class BaseModule(game.EntityGroup):
         if config.GPIO_AVAILABLE:
         # GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
         # GPIO.output(self.GPIO_LED_ID, False)
-            GPIO.setup(27, GPIO.IN)
-            GPIO.setup(24, GPIO.IN)
-            GPIO.add_event_detect(27, GPIO.RISING, callback=self.rotation_decode, bouncetime=10)
+        #     GPIO.setup(27, GPIO.IN)
+        #     GPIO.setup(24, GPIO.IN)
+            # GPIO.add_event_detect(27, GPIO.RISING, callback=self.rotation_decode, bouncetime=10)
 
         self.pypboy = boy
         self.position = (0, 40)
@@ -101,18 +101,18 @@ class BaseModule(game.EntityGroup):
 
 
     def handle_action(self, action, value=0):
+        Switch_A = GPIO.input(27)
+        Switch_B = GPIO.input(24)
 
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
         if action.startswith("knob_"):
-            if action == "knob_down":
-                Switch_A = GPIO.input(action)
+            if (Switch_A == 1) and (Switch_B == 0):
                 self.currentSubmodule -= 1
                 if self.currentSubmodule < 0:
                     self.currentSubmodule = self.submodules.__len__() - 1
                 print('Down')
                 self.switch_submodule(self.currentSubmodule)
-            elif action == "knob_up":
-                Switch_B = GPIO.input(action)
+            elif (Switch_A == 1) and (Switch_B == 1):
                 self.currentSubmodule += 1
                 if self.currentSubmodule >= self.submodules.__len__():
                     self.currentSubmodule = 0
