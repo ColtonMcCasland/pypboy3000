@@ -71,14 +71,21 @@ class BaseModule(game.EntityGroup):
 
     def handle_action(self, action, value=0):
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
-        print( self.currentSubmodule)
+        print(self.currentSubmodule)
 
-        if action == ("knob_up"):
-            num = int(self.currentSubmodule)
-            print(num)
-            self.switch_submodule(self.currentSubmodule + 1)
-        elif action == ("knob_down"):
-            self.switch_submodule(self.currentSubmodule - 1)
+
+        if action.startswith("knob_"):
+           if action == "knob_up":
+               self.currentSubmodule += 1
+               if self.currentSubmodule < 0:
+                   self.currentSubmodule = self.submodules.__len__() + 1
+               self.switch_submodule(self.currentSubmodule)
+
+           if action == "knob_down":
+                   self.currentSubmodule -= 1
+                   if self.currentSubmodule < 0:
+                       self.currentSubmodule = self.submodules.__len__() - 1
+                   self.switch_submodule(self.currentSubmodule)
         elif action in self.action_handlers:
             self.action_handlers[action]()
         else:
