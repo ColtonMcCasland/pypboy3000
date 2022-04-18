@@ -77,8 +77,8 @@ class BaseModule(game.EntityGroup):
 
 
     def handle_action(self, action, value=0):
-        Enc_A = 27
-        Enc_B = 24
+        Enc_A = 24
+        Enc_B = 27
 
         Switch_A = GPIO.input(Enc_A)
         Switch_B = GPIO.input(Enc_B)
