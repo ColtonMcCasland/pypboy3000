@@ -84,8 +84,8 @@ class BaseModule(game.EntityGroup):
 
         # if GPIO.input(17) == GPIO.HIGH:
         #     print("Button was pushed!")
-        # if action.startswith("module_"):
-        #     print('TESTING!!!')
+        if action.startswith("button_press"):
+            print('TESTING!!!')
 
         if action.startswith("knob_"):
             if action == "knob_down":
