@@ -23,9 +23,12 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
 
-        # if config.GPIO_AVAILABLE:
+        if config.GPIO_AVAILABLE:
         # GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
         # GPIO.output(self.GPIO_LED_ID, False)
+            GPIO.setup(27, GPIO.IN)
+            GPIO.setup(24, GPIO.IN)
+            GPIO.add_event_detect(27, GPIO.RISING, callback=self.rotation_decode, bouncetime=10)
 
         self.pypboy = boy
         self.position = (0, 40)
@@ -70,16 +73,46 @@ class BaseModule(game.EntityGroup):
         self.active.render(interval)
         super(BaseModule, self).render(interval)
 
+    def rotation_decode(self):
+        global counter
+        # sleep(0.002)
+        Switch_A = GPIO.input(27)
+        Switch_B = GPIO.input(24)
+
+        if (Switch_A == 1) and (Switch_B == 0):
+            counter += 1
+            print
+            "direction -> ", counter
+            while Switch_B == 0:
+                Switch_B = GPIO.input(24)
+            while Switch_B == 1:
+                Switch_B = GPIO.input(24)
+            return
+
+        elif (Switch_A == 1) and (Switch_B == 1):
+            counter -= 1
+            print
+            "direction <- ", counter
+            while Switch_A == 1:
+                Switch_A = GPIO.input(self)
+            return
+        else:
+            return
+
+
     def handle_action(self, action, value=0):
+
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
         if action.startswith("knob_"):
             if action == "knob_down":
+                Switch_A = GPIO.input(action)
                 self.currentSubmodule -= 1
                 if self.currentSubmodule < 0:
                     self.currentSubmodule = self.submodules.__len__() - 1
                 print('Down')
                 self.switch_submodule(self.currentSubmodule)
             elif action == "knob_up":
+                Switch_B = GPIO.input(action)
                 self.currentSubmodule += 1
                 if self.currentSubmodule >= self.submodules.__len__():
                     self.currentSubmodule = 0
