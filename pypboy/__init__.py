@@ -28,7 +28,7 @@ class BaseModule(game.EntityGroup):
         # GPIO.output(self.GPIO_LED_ID, False)
             GPIO.setup(27, GPIO.IN)
             GPIO.setup(24, GPIO.IN)
-            # GPIO.add_event_detect(27, GPIO.RISING, callback=self.rotation_decode, bouncetime=10)
+            GPIO.add_event_detect(24, GPIO.RISING, callback=self.rotation_decode, bouncetime=10)
 
         self.pypboy = boy
         self.position = (0, 40)
