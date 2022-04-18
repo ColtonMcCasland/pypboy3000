@@ -54,12 +54,12 @@ class BaseModule(game.EntityGroup):
     def switch_submodule(self, module):
         print("Changing submodules")
         if hasattr(self, 'active') and self.active:
-            self.active.handle_action("pause", module)
+            self.active.handle_action("pause")
             self.remove(self.active)
         if len(self.submodules) > module:
             self.active = self.submodules[module]
             self.active.parent = self
-            self.active.handle_action("resume", module)
+            self.active.handle_action("resume")
             self.footer.select(self.footer.menu[module])
             self.add(self.active)
         else:
@@ -69,11 +69,14 @@ class BaseModule(game.EntityGroup):
         self.active.render(interval)
         super(BaseModule, self).render(interval)
 
-    def handle_action(self, action, value=0, module=0):
+    def handle_action(self, action, value=0):
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
 
-        if action.startswith("knob_"):
-            num = int(module)
+        if action == ("knob_up"):
+            num = int(self.currentSubmodule)
+            self.switch_submodule(num + 1)
+        elif action == ("knob_down"):
+            num = int(self.currentSubmodule)
             self.switch_submodule(num - 1)
         elif action in self.action_handlers:
             self.action_handlers[action]()
