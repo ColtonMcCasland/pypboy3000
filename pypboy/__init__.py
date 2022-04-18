@@ -23,7 +23,10 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
 
-        # if config.GPIO_AVAILABLE:
+        if config.GPIO_AVAILABLE:
+            GPIO.setup(17, GPIO.IN,
+                       pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
+            GPIO.add_event_detect(10, GPIO.RISING, callback=self.button_callback)  # Setup event on pin 10 rising edge
         # GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
         # GPIO.output(self.GPIO_LED_ID, False)
         #     GPIO.setup(27, GPIO.IN)
@@ -78,9 +81,7 @@ class BaseModule(game.EntityGroup):
 
     def handle_action(self, action, value=0):
         # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
-        GPIO.setup(17, GPIO.IN,
-                   pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-        GPIO.add_event_detect(10, GPIO.RISING, callback=self.button_callback)  # Setup event on pin 10 rising edge
+
         # if GPIO.input(17) == GPIO.HIGH:
         #     print("Button was pushed!")
         # if action.startswith("module_"):
