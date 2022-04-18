@@ -80,13 +80,6 @@ class BaseModule(game.EntityGroup):
         print("Button was pushed!")
 
     def handle_action(self, action, value=0):
-        # LOGIC TO SWITCH MODULES ON BUTTON PRESS HERE
-
-        # if GPIO.input(17) == GPIO.HIGH:
-        #     print("Button was pushed!")
-        if action.startswith("button_press"):
-            print('TESTING!!!')
-
         if action.startswith("knob_"):
             if action == "knob_down":
                 self.currentSubmodule -= 1
