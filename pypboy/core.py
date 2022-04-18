@@ -100,14 +100,13 @@ class Pypboy(game.core.Engine):
     #         self.active.handle_swipe(swipe)
 
     def handle_action(self, action):
-        print (self.currentModule)
+        print(self.currentModule)
         if action == "button_press":
-            if self.currentModule == "module_stats":
-             self.switch_module("module_items")
-            elif self.currentModule == "module_items":
-                self.switch_module("module_data")
-            elif self.currentModule == "module_data":
-                self.switch_module("module_stats")
+            self.currentModule += 1
+            if self.currentModule > 2:
+                self.currentModule = 0
+            self.switch_module(config.MODULES[self.currentModule])
+
         else:
             if hasattr(self, 'active'):
                 self.active.handle_action(action)
