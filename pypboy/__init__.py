@@ -75,13 +75,14 @@ class BaseModule(game.EntityGroup):
         print(self.currentSubmodule)
 
         if action.startswith("knob_"):
-            if action == "knob_up":
-                self.currentSubmodule += 1
-                if self.currentSubmodule < 0:
-                    self.currentSubmodule = self.submodules.__len__() + 1
-                self.switch_submodule(self.currentSubmodule)
+
             if action == "knob_down":
                 self.currentSubmodule -= 1
+                if self.currentSubmodule < 0:
+                    self.currentSubmodule = self.submodules.__len__() - 1
+                self.switch_submodule(self.currentSubmodule)
+            if action == "knob_up":
+                self.currentSubmodule += 1
                 if self.currentSubmodule >= self.submodules.__len__():
                     self.currentSubmodule = 0
                 self.switch_submodule(self.currentSubmodule)
