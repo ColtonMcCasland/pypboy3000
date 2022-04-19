@@ -199,7 +199,7 @@ def play_pygame(file):
         p = None
         running = True
         paused = True
-        # pygame.mixer.music.play()
+        pygame.mixer.music.play()
         
         while pygame.mixer.music.get_busy() and running : 
             if not paused:

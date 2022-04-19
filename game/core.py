@@ -151,9 +151,6 @@ class Engine(object):
             cmdLine.printText(">MAPS.DOWNLOAD INIT")
             cmdLine.printText("\tDownloading Local map...")
 
-            # if config.SOUND_ENABLED:
-            #     pygame.mixer.Sound('sounds/start.wav').play()
-            # # self.rootParent.localMapPage.drawPage()
             cmdLine.printText("\tDownloading World map...")
             if config.SOUND_ENABLED:
                 pygame.mixer.Sound('sounds/start.wav').play()
