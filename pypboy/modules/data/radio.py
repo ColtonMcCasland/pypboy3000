@@ -3,8 +3,8 @@ import config
 
 from pypboy.modules.data import entities
 
-class Module(pypboy.SubModule):
 
+class Module(pypboy.SubModule):
     label = "Radio"
 
     def __init__(self, *args, **kwargs):
@@ -12,12 +12,12 @@ class Module(pypboy.SubModule):
         self.stations = [
             entities.ClassicalRadio(),
             entities.DiamondCityRadio()
-            #entities.EnclaveRadio(),
-            #entities.InstituteRadio(),
-            #entities.MinutemenRadio(),
-            #entities.Vault101Radio(),
-            #entities.ViolinRadio(),
-            #entities.F3Radio()
+            # entities.EnclaveRadio(),
+            # entities.InstituteRadio(),
+            # entities.MinutemenRadio(),
+            # entities.Vault101Radio(),
+            # entities.ViolinRadio(),
+            # entities.F3Radio()
         ]
         for station in self.stations:
             self.add(station)
@@ -43,7 +43,6 @@ class Module(pypboy.SubModule):
         self.active_station = self.stations[station]
         self.active_station.play_random()
 
-
     def handle_event(self, event):
         if event.type == config.EVENTS['SONG_END']:
             if hasattr(self, 'active_station') and self.active_station:
@@ -58,5 +57,5 @@ class Module(pypboy.SubModule):
         if self.menu.handle_tap() == False:
             if self.active_station.state == 1:
                 self.active_station.pause()
-            else:
-                self.active_station.play()
+            # else:
+            #     self.active_station.play()

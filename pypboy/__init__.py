@@ -23,6 +23,8 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
 
+        # For button press -> module change
+        # not sure if needed: do more testing
         if config.GPIO_AVAILABLE:
             GPIO.setup(17, GPIO.IN,
                        pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
@@ -81,16 +83,21 @@ class BaseModule(game.EntityGroup):
 
     def handle_action(self, action, value=0):
         if action.startswith("knob_"):
-            if action == "knob_down":
-                self.currentSubmodule -= 1
-                if self.currentSubmodule < 0:
-                    self.currentSubmodule = 0
-            if action == "knob_up":
-                if self.currentSubmodule > self.submodules.__len__():
-                    self.currentSubmodule = self.submodules.__len__()
-                else:
-                    self.currentSubmodule += 1
-            self.switch_submodule(self.currentSubmodule)
+            if config.GPIO_AVAILABLE:
+                if action.startswith("knob_"):
+                    if action == "knob_down":
+                        self.currentSubmodule -= 1
+                        if self.currentSubmodule < 0:
+                            self.currentSubmodule = 0
+                    if action == "knob_up":
+                        if self.currentSubmodule > self.submodules.__len__():
+                            self.currentSubmodule = self.submodules.__len__()
+                        else:
+                            self.currentSubmodule += 1
+                    self.switch_submodule(self.currentSubmodule)
+            else:
+                num = int(action[-1])
+                self.switch_submodule(num - 1)
         elif action in self.action_handlers:
             self.action_handlers[action]()
         else:

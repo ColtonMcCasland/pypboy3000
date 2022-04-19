@@ -63,9 +63,9 @@ class Footer(game.Entity):
         #self.dirty = 1
         self.selected = module
         self.image.fill((0, 0, 0))
-        pygame.draw.line(self.image, (95, 255, 177), (5, 2), (5, 20), 2)
-        pygame.draw.line(self.image, (95, 255, 177), (5, 20), (config.WIDTH - 13, 20), 2)
-        pygame.draw.line(self.image, (95, 255, 177), (config.WIDTH - 13, 2), (config.WIDTH - 13, 20), 2)
+        pygame.draw.line(self.image, (config.TINTCOLOUR), (5, 2), (5, 20), 2)
+        pygame.draw.line(self.image, (config.TINTCOLOUR), (5, 20), (config.WIDTH - 13, 20), 2)
+        pygame.draw.line(self.image, (config.TINTCOLOUR), (config.WIDTH - 13, 2), (config.WIDTH - 13, 20), 2)
 
         offset = 20
         for m in self.menu:
@@ -73,12 +73,12 @@ class Footer(game.Entity):
             text_width = 0
             while text_width < 54:
                 spaces = " ".join([" " for x in range(padding)])
-                text = config.FONTS[12].render("%s%s%s" % (spaces, m, spaces), True, (105, 255, 187), (0, 0, 0))
+                text = config.FONTS[12].render("%s%s%s" % (spaces, m, spaces), True, config.TINTCOLOUR, (0, 0, 0))
                 text_width = text.get_size()[0]
                 padding += 1
             #print(m+" : "+str(text.get_size()))
             if m == self.selected:
-                pygame.draw.rect(self.image, (95, 255, 177), (offset - 2, 6, (text_width + 3), 26), 2)
+                pygame.draw.rect(self.image, (config.TINTCOLOUR), (offset - 2, 6, (text_width + 3), 26), 2)
             self.image.blit(text, (offset, 12))
 
             offset = offset + 120 + (text_width - 100)
@@ -120,10 +120,10 @@ class Menu(game.Entity):
         self.image.fill((0, 0, 0))
         offset = 5
         for i in range(len(self.items)):
-            text = config.FONTS[14].render(" %s " % self.items[i], True, (105, 255, 187), (0, 0, 0))
+            text = config.FONTS[14].render(" %s " % self.items[i], True, config.TINTCOLOUR, (0, 0, 0))
             if i == self.selected:
                 selected_rect = (self.menuXVal, offset - 2, text.get_size()[0] + 10, text.get_size()[1] + 3)
-                pygame.draw.rect(self.image, (95, 255, 177), selected_rect, 2)
+                pygame.draw.rect(self.image, (config.TINTCOLOUR), selected_rect, 2)
             self.image.blit(text, (self.menuXVal + 5, offset))
             offset += text.get_size()[1] + 6
         
@@ -133,7 +133,7 @@ class Menu(game.Entity):
         offset = 5 + self.rect[1]
         print("X: " + str(x) + " Y: " + str(y))
         for i in range(len(self.items)):
-            text = config.FONTS[14].render(" %s " % self.items[i], True, (105, 255, 187), (0, 0, 0))
+            text = config.FONTS[14].render(" %s " % self.items[i], True, config.TINTCOLOUR, (0, 0, 0))
             menuRect = (self.menuXVal, offset - 2, text.get_size()[0] + 10, text.get_size()[1] + 3)
             print (menuRect)
             if x >= menuRect[0] and x < (menuRect[0] + menuRect[2]) and y >= menuRect[1] and y < (menuRect[1] + menuRect[3]) and i != self.selected:

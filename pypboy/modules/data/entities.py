@@ -170,7 +170,7 @@ class MapGrid(game.Entity):
                 pygame.transform.scale(image, (10, 10))
                 self.image.blit(image, (self.tags[name][0], self.tags[name][1]))
             # try:
-                text = config.FONTS[12].render(name, True, config.TINTCOLOUR, (0, 0, 0))
+                text = config.FONTS[12].render(name, True, config.TINTCOLOUR, pygame.BLEND_RGB_MULT)
             # text_width = text.get_size()[0]
             # 	pygame.draw.rect(
             # 		self,
@@ -222,7 +222,7 @@ class RadioStation(game.Entity):
             f = choice(self.files)
             self.filename = f
             pygame.mixer.music.load(f)
-            pygame.mixer.music.play(0, start_pos)
+            # pygame.mixer.music.play(0, start_pos)
             self.state = self.STATES['playing']
         
     def play(self):

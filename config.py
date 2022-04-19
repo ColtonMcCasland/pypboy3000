@@ -1,5 +1,7 @@
 import pygame
 
+PLAYERNAME = "Markuspwn"
+PLAYERLEVEL = 10
 WIDTH = 480
 HEIGHT = 320
 
@@ -8,7 +10,8 @@ maxClick = 15
 longPressTime = 200
 touchScale = 1
 invertPosition = False
-GPIO_AVAILABLE = True
+GPIO_AVAILABLE = False
+RADIO_STOP = True
 
 # OUTPUT_WIDTH = 320
 # OUTPUT_HEIGHT = 240
@@ -55,7 +58,7 @@ ACTIONS = {
 #GPIO 23 pin16 reboot
 #GPIO 25 pin 22 blank screen do not use
 GPIO_ACTIONS = {
-   17: "button_press", #GPIO 4
+   17: "module_change_press", #GPIO 4
    # 17: "module_items", #GPIO 14
    # 17: "module_data", #GPIO 15
 #	18:	"knob_1", #GPIO 18 Do Not enable messes with the screen. 
@@ -182,7 +185,9 @@ PERKS = [
     "Science"   
 ]
 
+
 pygame.font.init()
 FONTS = {}
 for x in range(10, 28):
     FONTS[x] = pygame.font.Font('monofonto.ttf', x)
+

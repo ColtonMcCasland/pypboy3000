@@ -12,6 +12,7 @@ from random import randint
 import copy
 import game.globals as globals
 import mutagen.oggvorbis
+import config
 
 
 class Radio(game.Entity):
@@ -45,7 +46,7 @@ class Radio(game.Entity):
             self.filename = file
             pygame.mixer.music.load(file)
             self.spectrum = LogSpectrum(file,force_mono=True) 
-            pygame.mixer.music.play()
+            # pygame.mixer.music.play()
             self.loaded = True
             self.paused = False
         
@@ -197,8 +198,8 @@ def play_pygame(file):
         f = None
         p = None
         running = True
-        paused = False
-        pygame.mixer.music.play()
+        paused = True
+        # pygame.mixer.music.play()
         
         while pygame.mixer.music.get_busy() and running : 
             if not paused:

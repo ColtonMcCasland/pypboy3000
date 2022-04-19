@@ -83,30 +83,15 @@ class Pypboy(game.core.Engine):
         else:
             print("Module '%s' not implemented." % module)
 
-    # def handle_swipe(self, swipe):
-    #     if swipe == -1:
-    #         return
-    #     if swipe == 4: #UP
-    #         self.currentModule += 1
-    #         if self.currentModule > 2:
-    #             self.currentModule = 0
-    #         self.switch_module(config.MODULES[self.currentModule])
-    #     elif swipe == 3: #DOWN
-    #         self.currentModule -= 1
-    #         if self.currentModule < 0:
-    #             self.currentModule = 2
-    #         self.switch_module(config.MODULES[self.currentModule])
-    #     else:
-    #         self.active.handle_swipe(swipe)
-
     def handle_action(self, action):
+        if action.startswith('module_'):
+            self.switch_module(action[7:])
         print(self.currentModule)
-        if action == "button_press":
+        if action == "module_change_press":
             self.currentModule += 1
             if self.currentModule > 2:
                 self.currentModule = 0
             self.switch_module(config.MODULES[self.currentModule])
-
         else:
             if hasattr(self, 'active'):
                 self.active.handle_action(action)
@@ -214,7 +199,8 @@ class Pypboy(game.core.Engine):
     def run(self):
         self.running = True
         while self.running:
-            self.check_gpio_input()
+            if config.GPIO_AVAILABLE:
+                self.check_gpio_input()
             for event in pygame.event.get():
                 self.handle_event(event)
             self.update()

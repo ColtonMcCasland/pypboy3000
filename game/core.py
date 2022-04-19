@@ -1,6 +1,9 @@
 import pygame
 import time
 
+import config
+
+
 class Engine(object):
 
     EVENTS_UPDATE = pygame.USEREVENT + 1
@@ -18,10 +21,17 @@ class Engine(object):
         self.groups = []
         self.root_children = EntityGroup()
         self.background = pygame.surface.Surface(self.screen.get_size()).convert_alpha()
-        self.background.fill((0, 0, 0))
+        backAdd = 30
+        self.background.fill((backAdd, backAdd, backAdd), None, pygame.BLEND_RGB_ADD)
 
         self.rescale = False
         self.last_render_time = 0
+
+        # Start humming sound:
+        if config.SOUND_ENABLED:
+            self.humSound = pygame.mixer.Sound('sounds/pipboy_hum.wav')
+            self.humSound.play(loops=-1)
+            self.humVolume = self.humSound.get_volume()
 
     def render(self):
         if self.last_render_time == 0:

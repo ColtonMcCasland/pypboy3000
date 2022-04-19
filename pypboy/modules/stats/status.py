@@ -35,9 +35,16 @@ class Health(game.Entity):
 
     def __init__(self):
         super(Health, self).__init__()
+        # Make transparent and adopt TINTCOLOUR
         self.image = pygame.image.load('images/pipboy.png')
         self.rect = self.image.get_rect()
-        self.image = self.image.convert()
-        text = config.FONTS[18].render("Terry Brown - Level 31", True, config.TINTCOLOUR, (0, 0, 0))
+        self.image.blit(self.image, (0, -15))
+        # self.image = self.image.convert()
+        # self.image.set_colorkey(config.TINTCOLOUR)
+        # self.image.set_alpha(10)
+        text = ("%s - LVL %s" % (config.PLAYERNAME, config.PLAYERLEVEL))
+        text = config.FONTS[14].render(text, True, config.TINTCOLOUR, (0, 0, 0))
+
         text_width = text.get_size()[0]
-        self.image.blit(text, (config.WIDTH / 2 - 8 - text_width / 2, 0))
+        # self.image = self.image.blit(self.image, (0,  150))
+        self.image.blit(text, (config.WIDTH / 2 - 8 - text_width / 2, config.HEIGHT - 90))
