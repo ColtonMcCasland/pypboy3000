@@ -12,7 +12,7 @@ touchScale = 1
 invertPosition = False
 GPIO_AVAILABLE = False
 RADIO_STOP = True
-
+QUICKLOAD = False
 # OUTPUT_WIDTH = 320
 # OUTPUT_HEIGHT = 240
 
@@ -191,3 +191,17 @@ FONTS = {}
 for x in range(10, 28):
     FONTS[x] = pygame.font.Font('monofonto.ttf', x)
 
+
+kernedFontName = 'fonts/monofonto-kerned.ttf'
+monoFontName = 'fonts/monofonto.ttf'
+
+# Scale font-sizes to chosen resolution:
+FONT_SML = pygame.font.Font(kernedFontName, int (HEIGHT * (12.0 / 360)))
+FONT_MED = pygame.font.Font(kernedFontName, int (HEIGHT * (16.0 / 360.0)))
+FONT_LRG = pygame.font.Font(kernedFontName, int (HEIGHT * (18.0 / 360.0)))
+MONOFONT = pygame.font.Font(monoFontName, int (HEIGHT * (16.0 / 360.0)))
+# Find monofont's character-size:
+tempImg = MONOFONT.render("X", True, TINTCOLOUR, (0, 0, 0))
+charHeight = tempImg.get_height()
+charWidth = tempImg.get_width()
+del tempImg
