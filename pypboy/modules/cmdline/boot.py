@@ -2,8 +2,10 @@
 #	Neal D Corbett, 2013
 # RobCo bootup printer
 
-import pygame, os, time, random, math
-from pygame.locals import *
+import math
+import pygame
+import time
+
 import config
 
 
@@ -15,7 +17,7 @@ class CmdLineClass:
         self.canvas = pygame.Surface(self.parent.canvasSize)
 
         # Use scanlines as base, with tint:
-        self.baseOverlay = self.parent.scanLines.convert()
+        self.baseOverlay = self.parent.scanLines.convert_alpha()
         self.baseOverlay.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
         self.cursorRect = [0, 0, config.charWidth, config.charWidth]
         self.cursorYoffset = (config.charHeight - config.charWidth - 4)
@@ -55,10 +57,10 @@ class CmdLineClass:
                 # Only actually redraw screen every so often:
                 lastChar = (charNum == lineEndNum)
                 if (math.fmod(charNum, 6) == 0) or (lastChar):
-                    if config.USE_SOUND:
+                    if config.SOUND_ENABLED:
                         config.SOUNDS["changemode"].play()
 
-                    charImage = config.MONOFONT.render(drawChars, True, config.DRAWCOLOUR, (0, 0, 0))
+                    charImage = config.MONOFONT.render(drawChars, True, config.TINTCOLOUR, (0, 0, 0))
                     self.canvas.blit(charImage, (printX, self.printY))
                     drawChars = ""
 
@@ -83,7 +85,7 @@ class CmdLineClass:
 
                     # Generate draw-image, including cursor:
                     drawImage = self.canvas.convert()
-                    pygame.draw.rect(drawImage, config.DRAWCOLOUR, self.cursorRect, 0)
+                    pygame.draw.rect(drawImage, config.TINTCOLOUR, self.cursorRect, 0)
 
                     drawImage.blit(self.parent.background, (0, 0), None, pygame.BLEND_RGB_ADD)
                     drawImage.blit(self.baseOverlay, (0, 0), None, pygame.BLEND_RGB_MULT)

@@ -73,7 +73,7 @@ class Footer(game.Entity):
             text_width = 0
             while text_width < 54:
                 spaces = " ".join([" " for x in range(padding)])
-                text = config.FONTS[12].render("%s%s%s" % (spaces, m, spaces), True, config.TINTCOLOUR, (0, 0, 0))
+                text = config.FONTS[14].render("%s%s%s" % (spaces, m, spaces), True, config.TINTCOLOUR, (0, 0, 0))
                 text_width = text.get_size()[0]
                 padding += 1
             #print(m+" : "+str(text.get_size()))

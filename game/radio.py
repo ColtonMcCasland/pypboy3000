@@ -214,7 +214,7 @@ def play_pygame(file):
             
             for event in pygame.event.get():
                 if (event.type == pygame.KEYUP) or (event.type == pygame.KEYDOWN):
-                    if (event.PIOkey == pygame.K_UP):
+                    if (event.key == pygame.K_UP):
                         pygame.mixer.music.pause()
                         paused = True
                     elif (event.key == pygame.K_DOWN):

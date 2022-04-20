@@ -28,7 +28,10 @@ class Pypboy(game.core.Engine):
             self.init_gpio_controls()
 
     def init_children(self):
-        self.background = pygame.image.load('images/overlay.png')
+        self.background = pygame.image.load('images/overlay.png').convert_alpha()
+        self.background.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
+
+
         # border = pypboy.ui.Border()
         # self.root_children.add(border)
         scanlines = pypboy.ui.Scanlines(800, 480, 3, 1, [(0, 13, 3, 50), (6, 42, 22, 100), (0, 13, 3, 50)],)

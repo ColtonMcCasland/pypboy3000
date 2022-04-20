@@ -26,14 +26,8 @@ class BaseModule(game.EntityGroup):
         # For button press -> module change
         # not sure if needed: do more testing
         if config.GPIO_AVAILABLE:
-            GPIO.setup(17, GPIO.IN,
-                       pull_up_down=GPIO.PUD_DOWN)  # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-            # GPIO.add_event_detect(17, GPIO.RISING, callback=self.button_callback)  # Setup event on pin 10 rising edge
-        # GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-        # GPIO.output(self.GPIO_LED_ID, False)
-        #     GPIO.setup(27, GPIO.IN)
-        #     GPIO.setup(24, GPIO.IN)
-        # GPIO.add_event_detect(27, GPIO.RISING, callback=self.rotation_decode, bouncetime=10)
+            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+            GPIO.output(self.GPIO_LED_ID, False)
 
         self.pypboy = boy
         self.position = (0, 40)
@@ -84,6 +78,7 @@ class BaseModule(game.EntityGroup):
     def handle_action(self, action, value=0):
         if action.startswith("knob_"):
             if config.GPIO_AVAILABLE:
+                # NEEDS TWEAKING: GLITCHY INTERFACE EXPERIENCE WITH KNOB
                 if action.startswith("knob_"):
                     if action == "knob_down":
                         self.currentSubmodule -= 1
@@ -119,8 +114,8 @@ class BaseModule(game.EntityGroup):
         self.paused = False
         self.currentSubmodule = 0
         self.switch_submodule(0)
-        # if config.GPIO_AVAILABLE:
-        # GPIO.output(self.GPIO_LED_ID, True)
+        if config.GPIO_AVAILABLE:
+            GPIO.output(self.GPIO_LED_ID, True)
         if config.SOUND_ENABLED:
             self.module_change_sfx.play()
 

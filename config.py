@@ -12,9 +12,15 @@ touchScale = 1
 invertPosition = False
 GPIO_AVAILABLE = False
 RADIO_STOP = True
-QUICKLOAD = False
-# OUTPUT_WIDTH = 320
-# OUTPUT_HEIGHT = 240
+QUICKLOAD = True
+
+# Main
+
+TINTCOLOUR = pygame.Color (26, 255, 128) # Green
+# TINTCOLOUR = pygame.Color (46, 207, 255) # Blue
+# TINTCOLOUR = pygame.Color (255, 182, 66) # Amber
+# TINTCOLOUR = pygame.Color (192, 255, 255) # White
+
 
 #MAP_FOCUS = (-5.9347681, 54.5889076)
 #MAP_FOCUS = (-102.3016145, 21.8841274) #Old Default?
@@ -70,8 +76,6 @@ GPIO_ACTIONS = {
 #    20: "knob_2", #GPIO 24
 #	25: "knob_3" #GPIO 23
 }
-TINTCOLOUR = pygame.Color (26, 255, 128) # Green
-
 
 MAP_ICONS = {
     "camp": 		pygame.image.load('images/map_icons/camp.png'),

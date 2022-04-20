@@ -1,6 +1,8 @@
 import pygame
 import time
 
+from pygame import KEYDOWN, MOUSEMOTION, MOUSEBUTTONDOWN, QUIT
+
 import config
 from pypboy.boot.cmdlinebootup import CmdLineClass
 
@@ -31,6 +33,8 @@ class Engine(object):
 
         # Block queuing for unused events:
         pygame.event.set_blocked(None)
+        for ev in (QUIT, KEYDOWN):
+            pygame.event.set_allowed(ev)
 
 
         pygame.display.set_caption(title)
@@ -47,7 +51,7 @@ class Engine(object):
 
         # Scanlines:
         # self.scanline = pygame.image.load('images/pipboyscanlines.png'),
-        self.lineCount = 60  # 48 60 80
+        self.lineCount = 80  # 48 60 80
         self.lineHeight = config.HEIGHT // self.lineCount
         scanline = pygame.transform.smoothscale(pygame.image.load('images/pipboyscanlines.png'), (config.WIDTH, self.lineHeight))
 
@@ -62,9 +66,9 @@ class Engine(object):
 
         # scanMult = 0.5
         scanMult = 0.7
-        scanMultColour = (scanMult * 255, scanMult * 255, scanMult * 255)
-        self.scanLines.fill(scanMultColour, None, pygame.BLEND_RGB_MULT)
-        self.scanLines = self.scanLines.convert()
+        # scanMultColour = (scanMult * 255, scanMult * 255, scanMult * 255)
+        self.scanLines = self.scanLines.convert_alpha()
+        self.scanLines.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
 
         # Start humming sound:
         if config.SOUND_ENABLED:
@@ -213,6 +217,9 @@ class Engine(object):
             # Add background:
             if (self.background != None):
                 drawImage.blit(self.background, (0, 0), None, pygame.BLEND_RGB_ADD)
+                self.background = pygame.transform.smoothscale(self.background, self.canvasSize)
+                self.background = self.background.convert_alpha()
+                self.background.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
 
             # Add scanlines:
             drawImage.blit(self.overlayFrames[0], (0, 0), None, pygame.BLEND_RGB_MULT)
