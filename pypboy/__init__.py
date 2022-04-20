@@ -25,9 +25,9 @@ class BaseModule(game.EntityGroup):
 
         # For button press -> module change
         # not sure if needed: do more testing
-        if config.GPIO_AVAILABLE:
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-            GPIO.output(self.GPIO_LED_ID, False)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+        #     GPIO.output(self.GPIO_LED_ID, False)
 
         self.pypboy = boy
         self.position = (0, 40)
