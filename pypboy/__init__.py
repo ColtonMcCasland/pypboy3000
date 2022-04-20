@@ -114,8 +114,8 @@ class BaseModule(game.EntityGroup):
         self.paused = False
         self.currentSubmodule = 0
         self.switch_submodule(0)
-        if config.GPIO_AVAILABLE:
-            GPIO.output(self.GPIO_LED_ID, True)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.output(self.GPIO_LED_ID, True)
         if config.SOUND_ENABLED:
             self.module_change_sfx.play()
 

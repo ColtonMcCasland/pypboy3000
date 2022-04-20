@@ -10,7 +10,7 @@ maxClick = 15
 longPressTime = 200
 touchScale = 1
 invertPosition = False
-GPIO_AVAILABLE = False
+GPIO_AVAILABLE = True
 RADIO_PLAYING = False
 QUICKLOAD = False
 
