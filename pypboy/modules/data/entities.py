@@ -222,7 +222,7 @@ class RadioStation(game.Entity):
             f = choice(self.files)
             self.filename = f
             pygame.mixer.music.load(f)
-            # pygame.mixer.music.play(0, start_pos)
+            pygame.mixer.music.play(0, start_pos)
             self.state = self.STATES['playing']
         
     def play(self):

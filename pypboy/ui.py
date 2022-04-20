@@ -129,6 +129,11 @@ class Menu(game.Entity):
         
     def handle_tap(self):
         print("Handle Tap")
+        if config.RADIO_PLAYING:
+            config.RADIO_PLAYING = False
+        else:
+            config.RADIO_PLAYING = True
+
         x,y = pygame.mouse.get_pos()
         offset = 5 + self.rect[1]
         print("X: " + str(x) + " Y: " + str(y))

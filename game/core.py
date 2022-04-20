@@ -33,12 +33,12 @@ class Engine(object):
 
         # Block queuing for unused events:
         pygame.event.set_blocked(None)
-        for ev in (QUIT, KEYDOWN):
+        for ev in (QUIT, KEYDOWN, MOUSEMOTION, MOUSEBUTTONDOWN):
             pygame.event.set_allowed(ev)
 
 
         pygame.display.set_caption(title)
-        pygame.mouse.set_visible(False)
+        pygame.mouse.set_visible(True)
 
         self.groups = []
         self.root_children = EntityGroup()
