@@ -33,12 +33,12 @@ class Engine(object):
 
         # Block queuing for unused events:
         pygame.event.set_blocked(None)
-        for ev in (QUIT, KEYDOWN, MOUSEMOTION, MOUSEBUTTONDOWN):
+        for ev in (QUIT, KEYDOWN):
             pygame.event.set_allowed(ev)
 
 
         pygame.display.set_caption(title)
-        pygame.mouse.set_visible(True)
+        pygame.mouse.set_visible(False)
 
         self.groups = []
         self.root_children = EntityGroup()
@@ -53,9 +53,10 @@ class Engine(object):
         # self.scanline = pygame.image.load('images/pipboyscanlines.png'),
         self.lineCount = 80  # 48 60 80
         self.lineHeight = config.HEIGHT // self.lineCount
-        scanline = pygame.transform.smoothscale(pygame.image.load('images/pipboyscanlines.png'), (config.WIDTH, self.lineHeight))
+        scanline = pygame.transform.smoothscale(pygame.image.load('images/pipboyscanlines.png').convert_alpha(), (config.WIDTH, self.lineHeight))
 
         self.scanLines = pygame.Surface(self.canvasSize)
+        self.scanLines.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
         yPos = 0
         while yPos < config.HEIGHT:
             self.scanLines.blit(scanline, (0, yPos))
@@ -219,7 +220,7 @@ class Engine(object):
                 drawImage.blit(self.background, (0, 0), None, pygame.BLEND_RGB_ADD)
                 self.background = pygame.transform.smoothscale(self.background, self.canvasSize)
                 self.background = self.background.convert_alpha()
-                self.background.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
+                self.background.fill((config.TINTCOLOUR), None, pygame.BLEND_RGB_MULT)
 
             # Add scanlines:
             drawImage.blit(self.overlayFrames[0], (0, 0), None, pygame.BLEND_RGB_MULT)

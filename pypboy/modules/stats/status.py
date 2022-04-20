@@ -35,7 +35,7 @@ class Health(game.Entity):
 
     def __init__(self):
         super(Health, self).__init__()
-        # Make transparent and adopt TINTCOLOUR
+
         self.image = pygame.image.load('images/pipboy.png').convert_alpha()
         self.image.fill((config.TINTCOLOUR), None, pygame.BLEND_RGB_MULT)
         # self.image.set_colorkey((255, 182, 66))
