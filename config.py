@@ -71,8 +71,8 @@ GPIO_ACTIONS = {
 #	18: "knob_2", #GPIO 18 Turns screen off do not use
 	24: "knob_up", #GPIO 7
 	27: "knob_down", #GPIO 22
-	18: "dial_down", #GPIO 18
-	4: "dial_up", #GPIO 4
+	4: "dial_down", #GPIO 18
+	18: "dial_up", #GPIO 4
 #    20: "knob_2", #GPIO 24
 #	25: "knob_3" #GPIO 23
 }
