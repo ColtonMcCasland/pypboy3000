@@ -13,9 +13,9 @@ class Engine(object):
     EVENTS_RENDER = pygame.USEREVENT + 2
 
     def __init__(self, title, width, height, *args, **kwargs):
-        super(Engine, self).__init__(*args, **kwargs)
         pygame.init()
         pygame.display.init()
+        super(Engine, self).__init__(*args, **kwargs)
 
 
         self.rootParent = self

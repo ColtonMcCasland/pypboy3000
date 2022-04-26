@@ -12,11 +12,11 @@ touchScale = 1
 invertPosition = False
 GPIO_AVAILABLE = True
 RADIO_PLAYING = False
-QUICKLOAD = True
+QUICKLOAD = False
 
 # Main
 
-TINTCOLOUR = pygame.Color (26, 255, 128) # Green
+TINTCOLOUR = pygame.Color(26, 255, 128) # Green
 # TINTCOLOUR = pygame.Color (46, 207, 255) # Blue
 # TINTCOLOUR = pygame.Color (255, 182, 66) # Amber
 # TINTCOLOUR = pygame.Color (192, 255, 255) # White
