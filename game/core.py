@@ -1,7 +1,7 @@
 import pygame
 import time
 
-from pygame import KEYDOWN, MOUSEMOTION, MOUSEBUTTONDOWN, QUIT
+from pygame import KEYDOWN, QUIT
 
 import config
 from pypboy.boot.cmdlinebootup import CmdLineClass
