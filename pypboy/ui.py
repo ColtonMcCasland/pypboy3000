@@ -155,7 +155,7 @@ class Menu(game.Entity):
         offset = 5 + self.rect[1]
         print("X: " + str(x) + " Y: " + str(y))
         for i in range(len(self.items)):
-            text = config.FONTS[12].render(" %s " % self.items[i], True, config.TINTCOLOUR, (0, 0, 0))
+            text = config.FONTS[14].render(" %s " % self.items[i], True, config.TINTCOLOUR, (0, 0, 0))
             menuRect = (self.menuXVal, offset - 2, text.get_size()[0] + 10, text.get_size()[1] + 3)
             print (menuRect)
             if x >= menuRect[0] and x < (menuRect[0] + menuRect[2]) and y >= menuRect[1] and y < (menuRect[1] + menuRect[3]) and i != self.selected:
