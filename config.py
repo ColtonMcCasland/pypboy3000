@@ -12,7 +12,7 @@ touchScale = 1
 invertPosition = False
 GPIO_AVAILABLE = True
 RADIO_PLAYING = True
-QUICKLOAD = False
+QUICKLOAD = True
 LOAD_CACHED_MAP = True
 # Main
 
