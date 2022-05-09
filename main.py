@@ -31,8 +31,8 @@ if config.GPIO_AVAILABLE:
 from pypboy.core import Pypboy
 
 try:
-    pygame.mixer.init(48000, -16, 2, 2048)
-    config.SOUND_ENABLED = True
+    pygame.mixer.init(44100, -16, 1, 1024)
+    # config.SOUND_ENABLED = True
 except Exception as e:
     print('Error on Sound!!!')
 

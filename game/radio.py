@@ -29,7 +29,7 @@ class Radio(game.Entity):
         freq = 44100	 # audio CD quality
         bitsize = -16	# unsigned 16 bit
         channels = 2	 # 1 is mono, 2 is stereo
-        buffer = 2048	# number of samples (experiment to get right sound)
+        buffer = 1024	# number of samples (experiment to get right sound)
         if config.SOUND_ENABLED:
             pygame.mixer.init(freq, bitsize, channels, buffer)
         self.osc = Oscilloscope() 
@@ -183,7 +183,7 @@ def play_pygame(file):
         freq = 44100	 # audio CD quality
         bitsize = -16	# unsigned 16 bit
         channels = 2	 # 1 is mono, 2 is stereo
-        buffer = 2048	# number of samples (experiment to get right sound)
+        buffer = 1024	# number of samples (experiment to get right sound)
         if config.SOUND_ENABLED:
             pygame.mixer.init(freq, bitsize, channels, buffer)
         
