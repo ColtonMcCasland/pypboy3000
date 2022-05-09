@@ -109,7 +109,7 @@ class Menu(game.Entity):
             # Need logic for rotary encoders,
             # they don't work right and are really twitchy
             # EX:
-            # 'if (dial_up & dial_down)' is the idea.
+            # 'if (dial_up & dial_down)'
             if action == "dial_up":
                 print('up')
                 if self.selected > 0:
