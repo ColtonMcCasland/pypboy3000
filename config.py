@@ -11,8 +11,8 @@ longPressTime = 200
 touchScale = 1
 invertPosition = False
 GPIO_AVAILABLE = True
-RADIO_PLAYING = False
-QUICKLOAD = True
+RADIO_PLAYING = True
+QUICKLOAD = False
 LOAD_CACHED_MAP = True
 # Main
 
