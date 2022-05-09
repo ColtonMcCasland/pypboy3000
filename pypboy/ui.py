@@ -106,7 +106,10 @@ class Menu(game.Entity):
     def handle_action(self, action):
 
         if config.GPIO_AVAILABLE:
-
+            # Need logic for rotary encoders,
+            # they don't work right and are really twitchy
+            # EX:
+            # 'if (dial_up & dial_down)' is the idea.
             if action == "dial_up":
                 print('up')
                 if self.selected > 0:

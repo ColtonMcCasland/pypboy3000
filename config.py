@@ -14,8 +14,6 @@ GPIO_AVAILABLE = True
 RADIO_PLAYING = False
 QUICKLOAD = True
 LOAD_CACHED_MAP = True
-SOUND_ENABLED = True
-
 # Main
 
 TINTCOLOUR = pygame.Color(26, 255, 128) # Green

@@ -34,7 +34,7 @@ try:
     pygame.mixer.init(44100, -16, 2, 2048)
     config.SOUND_ENABLED = True
 except Exception as e:
-    config.SOUND_ENABLED = False
+    print('Error on Sound!!!')
 
 if __name__ == "__main__":
     boy = Pypboy('Pip-Boy 3000', config.WIDTH, config.HEIGHT)
