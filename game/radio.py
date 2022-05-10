@@ -110,7 +110,7 @@ class Oscilloscope:
     
     def open(self, screen=None):
         # Open window
-        pygame.init()
+        # pygame.init()
         if screen:
             '''Embedded'''
             self.screen = pygame.Surface((self.WIDTH, self.HEIGHT), 0)
