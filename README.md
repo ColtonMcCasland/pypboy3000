@@ -12,5 +12,7 @@ Sources:
   - (*does not include wiring for front three LEDs*)
 ![](./Finished_product_Images/PiTFT_Touchscreen_pinout.png) 
   - Red are LED pins
+    - ![](./Finished_product_Images/IMG_1663.jpg)
+    - **Each** LED needs a 330ohm resistor, I used some cheap PCB and had my friend wired the LEDs and resistors onto to save space.
   - Black are Rotary encoder pins
     - The rotary set with three gpio with be the non-scroll wheel button.
