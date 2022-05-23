@@ -34,6 +34,7 @@ class Pypboy(game.core.Engine):
 
         # border = pypboy.ui.Border()
         # self.root_children.add(border)
+        # TODO: NEED TO CONFIGURE ALL COLORS FOR SCANLINES
         scanlines = pypboy.ui.Scanlines(800, 480, 3, 1, [(0, 13, 3, 50), (6, 42, 22, 100), (0, 13, 3, 50)],)
         self.root_children.add(scanlines)
         scanlines2 = pypboy.ui.Scanlines(800, 480, 8, 40, [(0, 10, 1, 0), (21, 62, 42, 90), (61, 122, 82, 100), (21, 62, 42, 90)] + [(0, 10, 1, 0) for x in range(50)], True)
