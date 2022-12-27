@@ -64,9 +64,10 @@ ACTIONS = {
 #GPIO 23 pin16 reboot
 #GPIO 25 pin 22 blank screen do not use
 GPIO_ACTIONS = {
-   18: "module_change_press", #GPIO 4
-   # 17: "module_items", #GPIO 14
-   # 17: "module_data", #GPIO 15
+   18: "module_change_press", 
+   22: "module_items",
+   25: "module_data", 
+   27: "module_stats", 
 #	18:	"knob_1", #GPIO 18 Do Not enable messes with the screen. 
 #	18: "knob_2", #GPIO 18 Turns screen off do not use
 	23: "knob_up", #GPIO 7
