@@ -64,18 +64,15 @@ ACTIONS = {
 #GPIO 23 pin16 reboot
 #GPIO 25 pin 22 blank screen do not use
 GPIO_ACTIONS = {
-   18: "module_change_press", 
-   22: "module_items",
-   25: "module_data", 
-   27: "module_stats", 
-#	18:	"knob_1", #GPIO 18 Do Not enable messes with the screen. 
-#	18: "knob_2", #GPIO 18 Turns screen off do not use
-	23: "knob_up", #GPIO 7
-	24: "knob_down", #GPIO 22
-	4: "dial_down", #GPIO 18
-	17: "dial_up", #GPIO 4
-#    20: "knob_2", #GPIO 24
-#	25: "knob_3" #GPIO 23
+    18: "module_change_press", 
+    # 22: "module_items",
+    # 25: "module_data", 
+    # 27: "module_stats", 
+
+    23: "knob_up", #GPIO 7
+    24: "knob_down", #GPIO 22
+    4: "dial_down", #GPIO 18
+    17: "dial_up", #GPIO 4
 }
 
 MAP_ICONS = {
