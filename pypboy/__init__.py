@@ -30,12 +30,8 @@ class BaseModule(game.EntityGroup):
 
 
         if config.GPIO_AVAILABLE:
-            GPIO.setup(22, GPIO.OUT)
-            GPIO.setup(25, GPIO.OUT)
-            GPIO.setup(27, GPIO.OUT)
-            GPIO.output(22, GPIO.HIGH)
-            GPIO.output(25, GPIO.HIGH)
-            GPIO.output(27, GPIO.HIGH)
+            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+            GPIO.output(self.GPIO_LED_ID, False)
 
 
         self.pypboy = boy
