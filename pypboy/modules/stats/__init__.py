@@ -12,6 +12,8 @@ class Module(BaseModule):
     GPIO_LED_ID = 22
 
     def __init__(self, *args, **kwargs):
+        GPIO.setup(GPIO_LED_ID, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+
         self.submodules = [
             status.Module(self),
             special.Module(self),
@@ -22,6 +24,7 @@ class Module(BaseModule):
         super(Module, self).__init__(*args, **kwargs)
         
     def handle_resume(self):
+
         self.pypboy.header.headline = self.label
         self.pypboy.header.title = ["AP  75/99","HP  159/314", "LVL 31"]
         self.active.handle_action("resume")

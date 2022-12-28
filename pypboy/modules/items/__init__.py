@@ -12,6 +12,8 @@ class Module(BaseModule):
 	GPIO_LED_ID = 27
 
 	def __init__(self, *args, **kwargs):
+		GPIO.setup(GPIO_LED_ID, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+
 		self.submodules = [
 			weapons.Module(self),
 			apparel.Module(self),
