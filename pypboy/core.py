@@ -91,11 +91,20 @@ class Pypboy(game.core.Engine):
         if action.startswith('module_'):
             self.switch_module(action[7:])
         print(self.currentModule)
-        if action == "module_change_press":
+
+        # Important
+        if action == "module_change_next":
             self.currentModule += 1
             if self.currentModule > 2:
                 self.currentModule = 0
             self.switch_module(config.MODULES[self.currentModule])
+
+        # if action == "module_change_last":
+        #      self.currentModule -= 1
+        #     if self.currentModule < 2:
+        #         self.currentModule = 0
+        #     self.switch_module(config.MODULES[self.currentModule])
+
         else:
             if hasattr(self, 'active'):
                 self.active.handle_action(action)
