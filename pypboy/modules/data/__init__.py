@@ -11,9 +11,7 @@ class Module(BaseModule):
     label = "DATA"
     GPIO_LED_ID = 25
 
-    def __init__(self, *args, **kwargs):        
-        GPIO.setup(GPIO_LED_ID, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-
+    def __init__(self, *args, **kwargs):
         self.submodules = [
             local_map.Module(self),
             world_map.Module(self),
