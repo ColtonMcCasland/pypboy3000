@@ -4,7 +4,6 @@ from pypboy.modules.items import apparel
 from pypboy.modules.items import aid
 from pypboy.modules.items import misc
 from pypboy.modules.items import ammo
-from pypboy.modules.items import end
 
 
 
@@ -20,7 +19,6 @@ class Module(BaseModule):
 			aid.Module(self),
 			misc.Module(self),
 			ammo.Module(self),
-			end.Module(self)
 
 		]
 		super(Module, self).__init__(*args, **kwargs)
