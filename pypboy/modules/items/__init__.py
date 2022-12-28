@@ -19,7 +19,7 @@ class Module(BaseModule):
 			apparel.Module(self),
 			aid.Module(self),
 			misc.Module(self),
-			ammo.Module(self)
+			ammo.Module(self),
 			end.Module(self)
 
 		]
