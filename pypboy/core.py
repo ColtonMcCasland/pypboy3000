@@ -55,9 +55,7 @@ class Pypboy(game.core.Engine):
     def init_gpio_controls(self):
         for pin in config.GPIO_ACTIONS.keys():
             print("Intialising pin %s as action '%s'" % (pin, config.GPIO_ACTIONS[pin]))
-
-            GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # error
-
+            GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
             self.gpio_actions[pin] = config.GPIO_ACTIONS[pin]
 
     def check_gpio_input(self):
@@ -87,41 +85,44 @@ class Pypboy(game.core.Engine):
         else:
             print("Module '%s' not implemented." % module)
 
-    def handle_action(self, action):
-        if action.startswith('module_'):
-            self.switch_module(action[7:])
-        print(self.currentModule)
-
-        # Important
-        if action == "module_change_next":
+    def handle_swipe(self, swipe):
+        if swipe == -1:
+            return
+        if swipe == 4: #UP
             self.currentModule += 1
             if self.currentModule > 2:
                 self.currentModule = 0
             self.switch_module(config.MODULES[self.currentModule])
+        elif swipe == 3: #DOWN
+            self.currentModule -= 1
+            if self.currentModule < 0:
+                self.currentModule = 2
+            self.switch_module(config.MODULES[self.currentModule])
+        else:
+            self.active.handle_swipe(swipe)
 
-        # if action == "module_change_last":
-        #      self.currentModule -= 1
-        #     if self.currentModule < 2:
-        #         self.currentModule = 0
-        #     self.switch_module(config.MODULES[self.currentModule])
-
+    def handle_action(self, action):
+        if action.startswith('module_'):
+            self.switch_module(action[7:])
         else:
             if hasattr(self, 'active'):
                 self.active.handle_action(action)
 
     def handle_event(self, event):
+        print('??')
         if event.type == pygame.KEYDOWN:
             if (event.key == pygame.K_ESCAPE):
                 self.running = False
-            else:
-                if event.key in config.ACTIONS:
-                    self.handle_action(config.ACTIONS[event.key])
-        elif event.type == pygame.QUIT:
-            self.running = False
-        elif event.type == config.EVENTS['SONG_END']:
-            if config.SOUND_ENABLED:
-                if hasattr(config, 'radio'):
-                    config.radio.handle_event(event)
+        #     else:
+        #         if event.key in config.ACTIONS:
+        #             self.handle_action(config.ACTIONS[event.key])
+        # elif event.type == pygame.QUIT:
+        #     self.running = False
+        # elif event.type == config.EVENTS['SONG_END']:
+        #     if config.SOUND_ENABLED:
+        #         if hasattr(config, 'radio'):
+        #             config.radio.handle_event(event)
+        
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.mouseDownTime = pygame.time.get_ticks()
             self.mouseDownPos = pygame.mouse.get_pos()
