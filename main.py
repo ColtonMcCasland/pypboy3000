@@ -24,10 +24,12 @@ except Exception:
 
 if config.GPIO_AVAILABLE:
     # Init framebuffer/touchscreen environment variables
-    # os.putenv('SDL_VIDEODRIVER', 'fbcon')
+    os.putenv('SDL_VIDEODRIVER', 'fbcon')
     os.putenv('SDL_FBDEV', '/dev/fb1')
     os.putenv('SDL_MOUSEDRV', 'TSLIB')
     os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
+
+    
     config.touchScale = 100
     config.invertPosition = True
 
