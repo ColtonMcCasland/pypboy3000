@@ -9,7 +9,7 @@ from pypboy.modules.stats import general
 class Module(BaseModule):
 
     label = "STATS"
-    GPIO_LED_ID = 22
+    GPIO_LED_ID = 27
 
     def __init__(self, *args, **kwargs):
         self.submodules = [

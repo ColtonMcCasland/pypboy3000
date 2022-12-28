@@ -65,13 +65,9 @@ ACTIONS = {
 #GPIO 25 pin 22 blank screen do not use
 GPIO_ACTIONS = {
    18: "module_change_press", #GPIO 4
-   # 17: "module_items", #GPIO 14
-   # 17: "module_data", #GPIO 15
-#	18:	"knob_1", #GPIO 18 Do Not enable messes with the screen. 
-#	18: "knob_2", #GPIO 18 Turns screen off do not use
-	23: "knob_up", #GPIO 7
-	24: "knob_down", #GPIO 22
-	4: "dial_down", #GPIO 18
+	23: "knob_up", #GPIO 23
+	24: "knob_down", #GPIO 24
+	4: "dial_down", #GPIO 4
 	17: "dial_up", #GPIO 4
 #    20: "knob_2", #GPIO 24
 #	25: "knob_3" #GPIO 23
