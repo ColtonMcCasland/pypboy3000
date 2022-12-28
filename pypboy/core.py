@@ -109,19 +109,19 @@ class Pypboy(game.core.Engine):
                 self.active.handle_action(action)
 
     def handle_event(self, event):
-        print('??')
+        # print('??')
         if event.type == pygame.KEYDOWN:
             if (event.key == pygame.K_ESCAPE):
                 self.running = False
-        #     else:
-        #         if event.key in config.ACTIONS:
-        #             self.handle_action(config.ACTIONS[event.key])
-        # elif event.type == pygame.QUIT:
-        #     self.running = False
-        # elif event.type == config.EVENTS['SONG_END']:
-        #     if config.SOUND_ENABLED:
-        #         if hasattr(config, 'radio'):
-        #             config.radio.handle_event(event)
+            else:
+                if event.key in config.ACTIONS:
+                    self.handle_action(config.ACTIONS[event.key])
+        elif event.type == pygame.QUIT:
+            self.running = False
+        elif event.type == config.EVENTS['SONG_END']:
+            if config.SOUND_ENABLED:
+                if hasattr(config, 'radio'):
+                    config.radio.handle_event(event)
         
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.mouseDownTime = pygame.time.get_ticks()
