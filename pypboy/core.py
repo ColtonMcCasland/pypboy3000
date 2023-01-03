@@ -123,15 +123,15 @@ class Pypboy(game.core.Engine):
                 if hasattr(config, 'radio'):
                     config.radio.handle_event(event)
         
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            self.mouseDownTime = pygame.time.get_ticks()
-            self.mouseDownPos = pygame.mouse.get_pos()
-            pygame.mouse.get_rel()
+        # elif event.type == pygame.MOUSEBUTTONDOWN:
+        #     self.mouseDownTime = pygame.time.get_ticks()
+        #     self.mouseDownPos = pygame.mouse.get_pos()
+        #     pygame.mouse.get_rel()
         elif event.type == pygame.MOUSEBUTTONUP:
-            self.mouseUpPos = pygame.mouse.get_pos()
-            swipe = self.getSwipeType2()
-            swipe = self.getSwipeType()
-            self.handle_swipe(swipe)
+            # self.mouseUpPos = pygame.mouse.get_pos()
+            # swipe = self.getSwipeType2()
+            # swipe = self.getSwipeType()
+            self.handle_swipe(4)
             self.mouseDownTime = 0
         else:
             if hasattr(self, 'active'):
