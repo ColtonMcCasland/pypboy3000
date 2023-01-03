@@ -24,10 +24,11 @@ except Exception:
 
 if config.GPIO_AVAILABLE:
     # Init framebuffer/touchscreen environment variables
-    # os.putenv('SDL_VIDEODRIVER', 'fbcon')
-    os.putenv('SDL_FBDEV', '/dev/fb1')
-    os.putenv('SDL_MOUSEDRV', 'TSLIB')
-    os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
+    os.environ['SDL_VIDEODRIVER'] = 'fbcon'
+    os.environ["SDL_FBDEV"] = "/dev/fb1"
+    os.environ["SDL_MOUSEDEV"] = "/dev/input/touchscreen"
+    os.environ["SDL_MOUSEDRV"] = "TSLIB"
+
 
     
     config.touchScale = 100
