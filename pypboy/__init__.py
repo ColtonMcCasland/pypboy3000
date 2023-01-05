@@ -63,8 +63,14 @@ class BaseModule(game.EntityGroup):
             self.add(self.active)
             if config.GPIO_AVAILABLE:
                 print("led number ->  %d" % self.GPIO_LED_ID)
-                GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-                GPIO.output(self.GPIO_LED_ID, True)
+                GPIO.setup(18, GPIO.OUT)
+                GPIO.setup(22, GPIO.OUT)
+                GPIO.setup(25, GPIO.OUT)
+                
+                GPIO.output(18, True)
+                GPIO.output(22, True)
+                GPIO.output(25, True)
+                
                 # for i in gpioList:
                 #     GPIO.setup(i, GPIO.OUT)
                 #     GPIO.output(i, False)
