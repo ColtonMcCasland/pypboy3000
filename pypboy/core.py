@@ -64,7 +64,7 @@ class Pypboy(game.core.Engine):
         for pin in config.GPIO_LEDS.keys():
             print("Intialising pin %s as LED '%s'" % (pin, config.GPIO_LEDS[pin]))
             GPIO.setup(pin, GPIO.OUT)
-            GPIO.output(pin, False)
+            GPIO.output(pin, GPIO.LOW)
             self.gpio_leds[pin] = config.GPIO_LEDS[pin]
 
     def check_gpio_input(self):
