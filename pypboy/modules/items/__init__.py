@@ -11,6 +11,10 @@ class Module(BaseModule):
 
 	label = "ITEMS"
 	GPIO_LED_ID = 18
+	GPIO.setup(GPIO_LED_ID, GPIO.OUT)
+	GPIO.output(GPIO_LED_ID, True)
+	GPIO.output(22, False)
+	GPIO.output(25, False)
 
 	def __init__(self, *args, **kwargs):
 		self.submodules = [
