@@ -43,6 +43,9 @@ class BaseModule(game.EntityGroup):
         }
         if config.SOUND_ENABLED:
             self.module_change_sfx = pygame.mixer.Sound('sounds/module_change.ogg')
+        
+        GPIO.setup(22, GPIO.OUT)
+        GPIO.output(22, True)
 
     def move(self, x, y):
         super(BaseModule, self).move(x, y)
