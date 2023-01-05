@@ -22,6 +22,8 @@ class BaseModule(game.EntityGroup):
 
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
+        
+        gpioArray = arr.array('i', [18, 22, 25])
 
 
         self.pypboy = boy
@@ -64,6 +66,10 @@ class BaseModule(game.EntityGroup):
                 print("led number ->  %d" % self.GPIO_LED_ID)
                 GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
                 GPIO.output(self.GPIO_LED_ID, True)
+                for i in self.gpioArray:
+                    print(i)
+                    if self.GPIO_LED_ID === i:
+                        print('match')
 
         # have list of 3 gpio pins, compare current to list and turn off other two after switching.
 
