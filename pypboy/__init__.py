@@ -61,6 +61,7 @@ class BaseModule(game.EntityGroup):
         print("Changing submodules")
         
         for i in gpioList:
+            GPIO.setup(i, GPIO.OUT)
             if i == self.GPIO_LED_ID:
                 print("self.GPIO_LED_ID")
                 print(self.GPIO_LED_ID)
