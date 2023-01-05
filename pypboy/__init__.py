@@ -56,12 +56,12 @@ class BaseModule(game.EntityGroup):
         
         for i in gpioList:
             GPIO.setup(i, GPIO.OUT)
-            if self.GPIO_LED_ID == 22:
+            if self.GPIO_LED_ID == i:
                 print("self.GPIO_LED_ID")
                 print(self.GPIO_LED_ID)
-                GPIO.output(self.GPIO_LED_ID, True)
+                GPIO.output(self.GPIO_LED_ID, GPIO.HIGH)
             else: 
-                GPIO.output(i, False)
+                GPIO.output(i, GPIO.LOW)
 
         
         if hasattr(self, 'active') and self.active:
