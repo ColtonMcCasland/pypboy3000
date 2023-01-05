@@ -4,20 +4,12 @@ from pypboy.modules.data import world_map
 from pypboy.modules.data import quests
 from pypboy.modules.data import misc
 from pypboy.modules.data import radio
-import config
 
-if config.GPIO_AVAILABLE:
-    import RPi.GPIO as GPIO
 
 class Module(BaseModule):
 
     label = "DATA"
     GPIO_LED_ID = 25
-    if config.GPIO_AVAILABLE:
-    #     GPIO.setup(GPIO_LED_ID, GPIO.OUT)
-        GPIO.output(GPIO_LED_ID, True)
-        GPIO.output(22, False),
-        GPIO.output(18, False),
 
     def __init__(self, *args, **kwargs):
         self.submodules = [

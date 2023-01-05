@@ -64,17 +64,10 @@ ACTIONS = {
 #GPIO 23 pin16 reboot
 #GPIO 25 pin 22 blank screen do not use
 GPIO_ACTIONS = {
-#    18: "module_change_press", #GPIO 4
 	23: "knob_up", #GPIO 23
 	24: "knob_down", #GPIO 24
 	4: "dial_down", #GPIO 4
-	17: "dial_up", #GPIO 4
-#    20: "knob_2", #GPIO 24
-    18: 'LED_1',
-    22: 'LED_2',
-    25: 'LED_3',
-    
-#	25: "knob_3" #GPIO 23
+	17: "dial_up", #GPIO 17
 }
 
 MAP_ICONS = {

@@ -4,20 +4,12 @@ from pypboy.modules.stats import special
 from pypboy.modules.stats import skills
 from pypboy.modules.stats import perks
 from pypboy.modules.stats import general
-import config
 
-if config.GPIO_AVAILABLE:
-    import RPi.GPIO as GPIO
 
 class Module(BaseModule):
 
     label = "STATS"
     GPIO_LED_ID = 22
-    if config.GPIO_AVAILABLE:
-        # GPIO.setup(GPIO_LED_ID, GPIO.OUT)
-        GPIO.output(GPIO_LED_ID, True)
-        GPIO.output(18, False),
-        GPIO.output(25, False),
 
     def __init__(self, *args, **kwargs):
         self.submodules = [
