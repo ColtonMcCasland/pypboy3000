@@ -15,6 +15,9 @@ class Module(BaseModule):
     GPIO_LED_ID = 25
     if config.GPIO_AVAILABLE:
         GPIO.setup(GPIO_LED_ID, GPIO.OUT)
+        GPIO.setup(22, GPIO.OUT)
+        GPIO.setup(18, GPIO.OUT)
+
         GPIO.output(GPIO_LED_ID, True)
         GPIO.output(22, False)
         GPIO.output(18, False)
