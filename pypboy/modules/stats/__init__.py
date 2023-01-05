@@ -15,11 +15,6 @@ class Module(BaseModule):
     GPIO_LED_ID = 18
 
     def __init__(self, *args, **kwargs):
-        if config.GPIO_AVAILABLE:
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-            GPIO.output(self.GPIO_LED_ID, True),
-            GPIO.output(22, False),
-            GPIO.output(25, False),
 
         self.submodules = [
             status.Module(self),

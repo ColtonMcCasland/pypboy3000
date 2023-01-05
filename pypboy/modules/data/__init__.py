@@ -16,14 +16,6 @@ class Module(BaseModule):
 
     def __init__(self, *args, **kwargs):
         
-        if config.GPIO_AVAILABLE:
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-            GPIO.setup(18, GPIO.OUT),
-            GPIO.setup(22, GPIO.OUT),
-            GPIO.output(self.GPIO_LED_ID, True),
-            GPIO.output(18, False),
-            GPIO.output(22, False),
-        
         self.submodules = [
             local_map.Module(self),
             world_map.Module(self),
