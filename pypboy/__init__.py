@@ -64,7 +64,7 @@ class BaseModule(game.EntityGroup):
                     if self.GPIO_LED_ID == i:
                         print("self.GPIO_LED_ID")
                         print(self.GPIO_LED_ID)
-                        GPIO.output(i, True)
+                        GPIO.output(self.GPIO_LED_ID, True)
 
                     
                     
