@@ -50,8 +50,8 @@ class BaseModule(game.EntityGroup):
         GPIO.setup(27, GPIO.OUT)
 
         GPIO.output(self.GPIO_LED_ID, True)
-        GPIO.output(18, True)
-        GPIO.output(27, True)
+        GPIO.output(18, False)
+        GPIO.output(27, False)
 
 
     def move(self, x, y):
