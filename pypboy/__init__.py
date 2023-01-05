@@ -63,9 +63,9 @@ class BaseModule(game.EntityGroup):
                     GPIO.setup(18, GPIO.OUT)
                     GPIO.output(18, False) 
                     GPIO.setup(22, GPIO.OUT)
-                    GPIO.output(22, False)  
+                    GPIO.output(22, True)  
                     GPIO.setup(27, GPIO.OUT)
-                    GPIO.output(27, True)   
+                    GPIO.output(27, False)   
                     
  
 
