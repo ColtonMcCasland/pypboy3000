@@ -70,12 +70,6 @@ GPIO_ACTIONS = {
 	17: "dial_up", #GPIO 17
 }
 
-GPIO_LEDS = {
-    18: "led_1",
-    22: "led_2",
-    25:  "led_3",
-}
-
 MAP_ICONS = {
     "camp": 		pygame.image.load('images/map_icons/camp.png'),
     "factory": 		pygame.image.load('images/map_icons/factory.png'),

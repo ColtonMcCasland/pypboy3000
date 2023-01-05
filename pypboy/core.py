@@ -26,7 +26,6 @@ class Pypboy(game.core.Engine):
         self.gpio_actions = {}
         if config.GPIO_AVAILABLE:
             self.init_gpio_controls()
-            
 
     def init_children(self):
         self.background = pygame.image.load('images/overlay.png').convert_alpha()
