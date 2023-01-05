@@ -60,7 +60,7 @@ class BaseModule(game.EntityGroup):
                 
                 for i in gpioList:
                     print("led gpio is ->  %d" % self.GPIO_LED_ID)
-                    print("I is -> " % i)
+                    print("I is -> %d" % i)
                     GPIO.setup(i, GPIO.OUT)
 
                     if i == self.GPIO_LED_ID:
