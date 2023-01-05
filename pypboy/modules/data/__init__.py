@@ -19,8 +19,8 @@ class Module(BaseModule):
         if config.GPIO_AVAILABLE:
             GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
             GPIO.output(self.GPIO_LED_ID, True),
-            GPIO.output(self.GPIO_LED_ID, 18),
-            GPIO.output(self.GPIO_LED_ID, 22),
+            GPIO.output(18, False),
+            GPIO.output(22, False),
         
         self.submodules = [
             local_map.Module(self),
