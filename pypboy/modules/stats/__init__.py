@@ -4,7 +4,10 @@ from pypboy.modules.stats import special
 from pypboy.modules.stats import skills
 from pypboy.modules.stats import perks
 from pypboy.modules.stats import general
+import config
 
+if config.GPIO_AVAILABLE:
+    import RPi.GPIO as GPIO
 
 class Module(BaseModule):
 

@@ -4,7 +4,10 @@ from pypboy.modules.data import world_map
 from pypboy.modules.data import quests
 from pypboy.modules.data import misc
 from pypboy.modules.data import radio
+import config
 
+if config.GPIO_AVAILABLE:
+    import RPi.GPIO as GPIO
 
 class Module(BaseModule):
 
