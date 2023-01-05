@@ -68,7 +68,7 @@ class BaseModule(game.EntityGroup):
                 GPIO.output(self.GPIO_LED_ID, True)
                 for i in self.gpioArray:
                     print(i)
-                    if self.GPIO_LED_ID === i:
+                    if self.GPIO_LED_ID == i:
                         print('match')
 
         # have list of 3 gpio pins, compare current to list and turn off other two after switching.
