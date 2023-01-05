@@ -50,7 +50,7 @@ class BaseModule(game.EntityGroup):
             self.active.move(x, y)
 
     def switch_submodule(self, module):
-        gpioList = [22, 18, 27]
+        gpioList = [18, 22, 27]
         print("Changing submodules")
         if hasattr(self, 'active') and self.active:
             self.active.handle_action("pause")
@@ -61,16 +61,16 @@ class BaseModule(game.EntityGroup):
                     print("led gpio is ->  %d" % self.GPIO_LED_ID)
                     print("I is -> %d" % i)
                     
-                    
+                    GPIO.setup(i, GPIO.OUT)
 
                     if i == self.GPIO_LED_ID:
+                        print("self.GPIO_LED_ID")
+                        print(self.GPIO_LED_ID)
                         
-                        print("activate %d" % self.GPIO_LED_ID)
-                        GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+                        print("i")
+                        print(i)
                         GPIO.output(self.GPIO_LED_ID, True)
                     else:
-                        print("DE activate %d" % i)
-                        GPIO.setup(i, GPIO.OUT)
                         GPIO.output(i, False)
 
                     
