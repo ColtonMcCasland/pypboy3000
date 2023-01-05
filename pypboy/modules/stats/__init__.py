@@ -14,8 +14,8 @@ class Module(BaseModule):
     label = "STATS"
     GPIO_LED_ID = 22
     if config.GPIO_AVAILABLE:
-        GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-        GPIO.output(self.GPIO_LED_ID, True),
+        GPIO.setup(GPIO_LED_ID, GPIO.OUT)
+        GPIO.output(GPIO_LED_ID, True),
         GPIO.output(18, False),
         GPIO.output(25, False),
 
