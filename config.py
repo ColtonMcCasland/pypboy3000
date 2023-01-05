@@ -71,7 +71,7 @@ GPIO_ACTIONS = {
 }
 
 GPIO_LEDS = {
-    18: "led_1".
+    18: "led_1",
     22: "led_2",
     25:  "led_3",
 }
