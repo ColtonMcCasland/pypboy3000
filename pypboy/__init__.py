@@ -65,7 +65,7 @@ class BaseModule(game.EntityGroup):
                     GPIO.output(i, False)   
 
                     if i == self.GPIO_LED_ID:
-                        print("Match is -> %d" % i % "and %d" % self.GPIO_LED_ID)
+                        print(i % self.GPIO_LED_ID)
                         GPIO.output(i, True)
                     
                     
