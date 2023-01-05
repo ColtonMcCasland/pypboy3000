@@ -55,20 +55,16 @@ class BaseModule(game.EntityGroup):
         if hasattr(self, 'active') and self.active:
             self.active.handle_action("pause")
             self.remove(self.active)
-            if config.GPIO_AVAILABLE:
 
+            if config.GPIO_AVAILABLE:
                 for i in gpioList:
-                     
+                    GPIO.setup(i, GPIO.OUT)
+                    GPIO.output(i, False)
 
                     if self.GPIO_LED_ID == i:
                         print("self.GPIO_LED_ID")
                         print(self.GPIO_LED_ID)
-                        
-                        print("i")
-                        print(i)
                         GPIO.output(i, True)
-                    else:
-                        GPIO.output(i, False)
 
                     
                     
