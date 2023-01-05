@@ -23,10 +23,10 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
 
-        if config.GPIO_AVAILABLE:
-            print("led number ->  %d" % self.GPIO_LED_ID)
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-            GPIO.output(self.GPIO_LED_ID, False)
+        # if config.GPIO_AVAILABLE:
+        #     print("led number ->  %d" % self.GPIO_LED_ID)
+        #     GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+        #     GPIO.output(self.GPIO_LED_ID, True)
 
 
         self.pypboy = boy

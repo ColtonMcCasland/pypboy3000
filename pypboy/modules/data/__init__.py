@@ -12,6 +12,14 @@ class Module(BaseModule):
     GPIO_LED_ID = 25
 
     def __init__(self, *args, **kwargs):
+        
+        if config.GPIO_AVAILABLE:
+            print("led number ->  %d" % self.GPIO_LED_ID)
+            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+            GPIO.output(self.GPIO_LED_ID, True)
+            GPIO.output(self.GPIO_LED_ID, 18)
+            GPIO.output(self.GPIO_LED_ID, 22)
+        
         self.submodules = [
             local_map.Module(self),
             world_map.Module(self),
