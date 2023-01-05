@@ -29,4 +29,5 @@ class Module(BaseModule):
         self.pypboy.header.headline = self.label
         self.pypboy.header.title = ["Santa Clarita"]
         self.active.handle_action("resume")
+        self.GPIO_LED_ID = self.GPIO_LED_ID
         

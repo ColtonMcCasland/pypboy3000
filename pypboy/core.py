@@ -24,10 +24,9 @@ class Pypboy(game.core.Engine):
         self.init_modules()
         
         self.gpio_actions = {}
-        self.gpio_leds = {}
         if config.GPIO_AVAILABLE:
             self.init_gpio_controls()
-            self.init_gpio_leds()
+            
 
     def init_children(self):
         self.background = pygame.image.load('images/overlay.png').convert_alpha()
@@ -59,13 +58,6 @@ class Pypboy(game.core.Engine):
             print("Intialising pin %s as action '%s'" % (pin, config.GPIO_ACTIONS[pin]))
             GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
             self.gpio_actions[pin] = config.GPIO_ACTIONS[pin]
-            
-    def init_gpio_leds(self):
-        for pin in config.GPIO_LEDS.keys():
-            print("Intialising pin %s as LED '%s'" % (pin, config.GPIO_LEDS[pin]))
-            GPIO.setup(pin, GPIO.OUT)
-            GPIO.output(pin, GPIO.LOW)
-            self.gpio_leds[pin] = config.GPIO_LEDS[pin]
 
     def check_gpio_input(self):
         for pin in self.gpio_actions.keys():
