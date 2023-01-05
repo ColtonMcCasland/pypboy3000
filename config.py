@@ -70,6 +70,10 @@ GPIO_ACTIONS = {
 	4: "dial_down", #GPIO 4
 	17: "dial_up", #GPIO 4
 #    20: "knob_2", #GPIO 24
+    18: 'LED_1',
+    22: 'LED_2',
+    25: 'LED_3',
+    
 #	25: "knob_3" #GPIO 23
 }
 
