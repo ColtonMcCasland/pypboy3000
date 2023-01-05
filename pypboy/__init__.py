@@ -66,12 +66,13 @@ class BaseModule(game.EntityGroup):
                 for i in gpioList:
                     GPIO.setup(i, GPIO.OUT)
                     GPIO.output(i, False)
-                    GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-                    GPIO.output(self.GPIO_LED_ID, True)
                     print(i)
                     if self.GPIO_LED_ID != i:
                         GPIO.setup(i, GPIO.OUT)
                         GPIO.output(i, False)
+                    # else:
+                        GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+                        GPIO.output(self.GPIO_LED_ID, True)
 
         # have list of 3 gpio pins, compare current to list and turn off other two after switching.
 
