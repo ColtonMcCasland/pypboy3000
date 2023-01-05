@@ -57,12 +57,12 @@ class BaseModule(game.EntityGroup):
             self.remove(self.active)
             if config.GPIO_AVAILABLE:
 
-                for i in gpioList:
-                    print("led gpio is ->  %d" % self.GPIO_LED_ID)
-                    print("I is -> %d" % i)
+                # for i in gpioList:
+                #     print("led gpio is ->  %d" % self.GPIO_LED_ID)
+                #     print("I is -> %d" % i)
                     
-                    GPIO.setup(i, GPIO.OUT)
-                    GPIO.output(i, True)
+                    GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+                    GPIO.output(self.GPIO_LED_ID, True)
 
                     # if i == self.GPIO_LED_ID:
                     #     print("self.GPIO_LED_ID")
