@@ -22,8 +22,6 @@ class BaseModule(game.EntityGroup):
 
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
-        
-        gpioList = [18, 22, 25]
 
 
         self.pypboy = boy
@@ -52,6 +50,7 @@ class BaseModule(game.EntityGroup):
             self.active.move(x, y)
 
     def switch_submodule(self, module):
+        gpioList = [18, 22, 25]
         print("Changing submodules")
         if hasattr(self, 'active') and self.active:
             self.active.handle_action("pause")
