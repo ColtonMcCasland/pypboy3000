@@ -59,18 +59,19 @@ class BaseModule(game.EntityGroup):
     def switch_submodule(self, module):
         gpioList = [22, 18, 27]
         print("Changing submodules")
+        
+        for i in gpioList:
+            if i == self.GPIO_LED_ID:
+                print("self.GPIO_LED_ID")
+                print(self.GPIO_LED_ID)
+                GPIO.output(self.GPIO_LED_ID, True)
+            else: 
+                GPIO.output(i, False)
+
+        
         if hasattr(self, 'active') and self.active:
             self.active.handle_action("pause")
             self.remove(self.active)
-
-            for i in gpioList:
-                if self.GPIO_LED_ID == i:
-                    print("self.GPIO_LED_ID")
-                    print(self.GPIO_LED_ID)
-                    # GPIO.output(self.GPIO_LED_ID, True)
-
-                    
-                    
                         
 
         # have list of 3 gpio pins, compare current to list and turn off other two after switching.
