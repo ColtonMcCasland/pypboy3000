@@ -11,14 +11,14 @@ from time import sleep
 # button25 = Button(25)
 while True:
     
-    if button4.is_pressed:
-        print("4 Pressed pin7")
-    elif button17.is_pressed:
-        print("17 Pressed pin 11")
-    elif button18.is_pressed:
-        print("18 Pressed pin 12")
-    elif button27.is_pressed:
-        print("27 Pressed pin 13")
+    # if button4.is_pressed:
+    #     print("4 Pressed pin7")
+    # elif button17.is_pressed:
+    #     print("17 Pressed pin 11")
+    # elif button18.is_pressed:
+    #     print("18 Pressed pin 12")
+    # elif button27.is_pressed:
+    #     print("27 Pressed pin 13")
     # elif button22.is_pressed:
     #     print("22 Pressed pin 15")
     #elif button23.is_pressed:
