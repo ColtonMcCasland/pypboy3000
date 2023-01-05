@@ -44,7 +44,7 @@ class BaseModule(game.EntityGroup):
         if config.SOUND_ENABLED:
             self.module_change_sfx = pygame.mixer.Sound('sounds/module_change.ogg')
             
-         gpioList = [22, 18, 27]
+        gpioList = [22, 18, 27]
         if config.GPIO_AVAILABLE:
              for i in gpioList:
                     GPIO.setup(i, GPIO.OUT)
