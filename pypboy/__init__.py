@@ -55,25 +55,25 @@ class BaseModule(game.EntityGroup):
         print("Changing submodules")
         
         # for i in gpioList:
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-            
-            if self.GPIO_LED_ID == 22:
-                print("self.GPIO_LED_ID")
-                print(self.GPIO_LED_ID)
-                GPIO.output(22, GPIO.HIGH)
+        GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+        
+        if self.GPIO_LED_ID == 22:
+            print("self.GPIO_LED_ID")
+            print(self.GPIO_LED_ID)
+            GPIO.output(22, GPIO.HIGH)
 
-            elif self.GPIO_LED_ID == 18:
-                print("self.GPIO_LED_ID")
-                print(self.GPIO_LED_ID)
-                GPIO.output(18, GPIO.HIGH)
+        elif self.GPIO_LED_ID == 18:
+            print("self.GPIO_LED_ID")
+            print(self.GPIO_LED_ID)
+            GPIO.output(18, GPIO.HIGH)
 
-            elif self.GPIO_LED_ID == 27:
-                print("self.GPIO_LED_ID")
-                print(self.GPIO_LED_ID)
-                GPIO.output(27, GPIO.HIGH)
+        elif self.GPIO_LED_ID == 27:
+            print("self.GPIO_LED_ID")
+            print(self.GPIO_LED_ID)
+            GPIO.output(27, GPIO.HIGH)
 
-            else: 
-                GPIO.output(i, GPIO.LOW)
+        else: 
+            GPIO.output(i, GPIO.LOW)
 
         
         if hasattr(self, 'active') and self.active:
