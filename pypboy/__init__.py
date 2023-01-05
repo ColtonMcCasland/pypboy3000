@@ -44,14 +44,11 @@ class BaseModule(game.EntityGroup):
         if config.SOUND_ENABLED:
             self.module_change_sfx = pygame.mixer.Sound('sounds/module_change.ogg')
             
-    
-        GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-        GPIO.setup(18, GPIO.OUT)
-        GPIO.setup(27, GPIO.OUT)
-
-        GPIO.output(self.GPIO_LED_ID, True)
-        GPIO.output(18, False)
-        GPIO.output(27, False)
+         gpioList = [22, 18, 27]
+        if config.GPIO_AVAILABLE:
+             for i in gpioList:
+                    GPIO.setup(i, GPIO.OUT)
+                    GPIO.output(i, False)
 
 
     def move(self, x, y):
@@ -66,15 +63,11 @@ class BaseModule(game.EntityGroup):
             self.active.handle_action("pause")
             self.remove(self.active)
 
-            if config.GPIO_AVAILABLE:
-                for i in gpioList:
-                    GPIO.setup(i, GPIO.OUT)
-                    GPIO.output(i, False)
-
-                    if self.GPIO_LED_ID == i:
-                        print("self.GPIO_LED_ID")
-                        print(self.GPIO_LED_ID)
-                        GPIO.output(self.GPIO_LED_ID, True)
+            for i in gpioList:
+                if self.GPIO_LED_ID == i:
+                    print("self.GPIO_LED_ID")
+                    print(self.GPIO_LED_ID)
+                    GPIO.output(self.GPIO_LED_ID, True)
 
                     
                     
