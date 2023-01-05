@@ -23,7 +23,7 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
         
-        gpioArray = arr.array('i', [18, 22, 25])
+        gpioList = [18, 22, 25]
 
 
         self.pypboy = boy
@@ -66,7 +66,7 @@ class BaseModule(game.EntityGroup):
                 print("led number ->  %d" % self.GPIO_LED_ID)
                 GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
                 GPIO.output(self.GPIO_LED_ID, True)
-                for i in self.gpioArray:
+                for i in self.gpioList:
                     print(i)
                     if self.GPIO_LED_ID == i:
                         print('match')
