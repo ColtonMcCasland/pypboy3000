@@ -66,12 +66,12 @@ ACTIONS = {
 GPIO_ACTIONS = {
 	27: "knob_up", #GPIO 23
 	17: "knob_down", #GPIO 24
-	23: "dial_down", #GPIO 4
-	18: "dial_up", #GPIO 17
+	# 23: "dial_down", #GPIO 4
+	# 18: "dial_up", #GPIO 17
 }
 
 # LEDs
-# pin 24, 22, 4
+# pin 23, 24, 4 
 
 MAP_ICONS = {
     "camp": 		pygame.image.load('images/map_icons/camp.png'),
