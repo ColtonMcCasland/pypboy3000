@@ -43,13 +43,6 @@ class BaseModule(game.EntityGroup):
         }
         if config.SOUND_ENABLED:
             self.module_change_sfx = pygame.mixer.Sound('sounds/module_change.ogg')
-            
-        # gpioList = [22, 18, 27]
-        # if config.GPIO_AVAILABLE:
-        #      for i in gpioList:
-        #             GPIO.setup(i, GPIO.OUT)
-        #             GPIO.output(i, False)
-
 
     def move(self, x, y):
         super(BaseModule, self).move(x, y)
@@ -57,27 +50,31 @@ class BaseModule(game.EntityGroup):
             self.active.move(x, y)
 
     def switch_submodule(self, module):
-        # gpioList = [22, 18, 27]
+        gpioList = [18, 22, 25]
         print("Changing submodules")
-        
-        # for i in gpioList:
-        #     if i == self.GPIO_LED_ID:
-        #         print("self.GPIO_LED_ID")
-        #         print(self.GPIO_LED_ID)
-        #         # GPIO.output(self.GPIO_LED_ID, True)
-        
         if hasattr(self, 'active') and self.active:
             self.active.handle_action("pause")
             self.remove(self.active)
-                        
-
-        # have list of 3 gpio pins, compare current to list and turn off other two after switching.
         if len(self.submodules) > module:
             self.active = self.submodules[module]
             self.active.parent = self
             self.active.handle_action("resume")
             self.footer.select(self.footer.menu[module])
             self.add(self.active)
+            # if config.GPIO_AVAILABLE:
+            #     print("led number ->  %d" % self.GPIO_LED_ID)
+                # for i in gpioList:
+                #     GPIO.setup(i, GPIO.OUT)
+                #     GPIO.output(i, False)
+                #     print(i)
+                #     if self.GPIO_LED_ID != i:
+                #         GPIO.setup(i, GPIO.OUT)
+                #         GPIO.output(i, False)
+                #     # else:
+                #         GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+                #         GPIO.output(self.GPIO_LED_ID, True)
+
+        # have list of 3 gpio pins, compare current to list and turn off other two after switching.
 
         else:
             print("No submodule at %d" % module)
