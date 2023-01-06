@@ -66,8 +66,8 @@ ACTIONS = {
 GPIO_ACTIONS = {
 	# 24: "knob_up", #GPIO 23
 	# 23: "knob_down", #GPIO 24
-	# 4: "dial_down", #GPIO 4
-	# 17: "dial_up", #GPIO 17
+	4: "dial_down", #GPIO 4
+	17: "dial_up", #GPIO 17
 }
 
 MAP_ICONS = {
