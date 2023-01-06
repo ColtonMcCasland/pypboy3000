@@ -43,6 +43,12 @@ class BaseModule(game.EntityGroup):
         }
         if config.SOUND_ENABLED:
             self.module_change_sfx = pygame.mixer.Sound('sounds/module_change.ogg')
+            
+        # gpioList = [22, 18, 27]
+        # if config.GPIO_AVAILABLE:
+        #      for i in gpioList:
+        #             GPIO.setup(i, GPIO.OUT)
+        #             GPIO.output(i, False)
 
 
     def move(self, x, y):
@@ -51,30 +57,14 @@ class BaseModule(game.EntityGroup):
             self.active.move(x, y)
 
     def switch_submodule(self, module):
-        gpioList = [22, 18, 27]
+        # gpioList = [22, 18, 27]
         print("Changing submodules")
         
         # for i in gpioList:
-        GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
-        
-        if self.GPIO_LED_ID == 22:
-            print("self.GPIO_LED_ID")
-            print(self.GPIO_LED_ID)
-            GPIO.output(22, GPIO.HIGH)
-
-        elif self.GPIO_LED_ID == 18:
-            print("self.GPIO_LED_ID")
-            print(self.GPIO_LED_ID)
-            GPIO.output(18, GPIO.HIGH)
-
-        elif self.GPIO_LED_ID == 27:
-            print("self.GPIO_LED_ID")
-            print(self.GPIO_LED_ID)
-            GPIO.output(27, GPIO.HIGH)
-
-        else: 
-            GPIO.output(i, GPIO.LOW)
-
+        #     if i == self.GPIO_LED_ID:
+        #         print("self.GPIO_LED_ID")
+        #         print(self.GPIO_LED_ID)
+        #         # GPIO.output(self.GPIO_LED_ID, True)
         
         if hasattr(self, 'active') and self.active:
             self.active.handle_action("pause")
