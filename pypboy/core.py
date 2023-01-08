@@ -127,14 +127,14 @@ class Pypboy(game.core.Engine):
         #     self.mouseDownTime = pygame.time.get_ticks()
         #     self.mouseDownPos = pygame.mouse.get_pos()
         #     pygame.mouse.get_rel()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
+        if event.type == pygame.pygame.MOUSEBUTTONUP:
+            # if event.button == 1:
             # self.mouseUpPos = pygame.mouse.get_pos()
             # swipe = self.getSwipeType2()
             # swipe = self.getSwipeType()
-                swipe = 4
-                self.handle_swipe(swipe)
-                self.mouseDownTime = 0
+            swipe = 4
+            self.handle_swipe(swipe)
+            self.mouseDownTime = 0
         else:
             if hasattr(self, 'active'):
                 self.active.handle_event(event)
