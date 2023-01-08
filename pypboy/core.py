@@ -130,6 +130,7 @@ class Pypboy(game.core.Engine):
         elif event.type == pygame.MOUSEBUTTONUP:
             print(event.button)
             if event.button == 1:
+                print('clicked')
             # self.mouseUpPos = pygame.mouse.get_pos()
             # swipe = self.getSwipeType2()
             # swipe = self.getSwipeType()
