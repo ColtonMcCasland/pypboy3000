@@ -123,7 +123,7 @@ class Pypboy(game.core.Engine):
                 if hasattr(config, 'radio'):
                     config.radio.handle_event(event)
         
-       elif event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
 
                 self.mouseDownTime = pygame.time.get_ticks()
