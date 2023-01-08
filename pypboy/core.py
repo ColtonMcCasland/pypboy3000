@@ -127,7 +127,8 @@ class Pypboy(game.core.Engine):
             # self.mouseDownTime = pygame.time.get_ticks()
             # self.mouseDownPos = pygame.mouse.get_pos()
             # pygame.mouse.get_rel()
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONUP:
+            print('touched screen')
             # self.mouseUpPos = pygame.mouse.get_pos()
             # swipe = self.getSwipeType2()
             # swipe = self.getSwipeType()
