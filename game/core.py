@@ -72,106 +72,106 @@ class Engine(object):
         self.scanLines.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
 
         # Start humming sound:
-        if config.SOUND_ENABLED:
-            self.humSound = pygame.mixer.Sound('sounds/pipboy_hum.wav')
-            self.humSound.play(loops=-1)
-            self.humVolume = self.humSound.get_volume()
+        # if config.SOUND_ENABLED:
+        #     self.humSound = pygame.mixer.Sound('sounds/pipboy_hum.wav')
+        #     self.humSound.play(loops=-1)
+        #     self.humVolume = self.humSound.get_volume()
 
-            # Set up data for generating overlay frames
+        #     # Set up data for generating overlay frames
 
-            self.distortLineHeight = (config.HEIGHT // 4)
-            self.distortLine = pygame.transform.smoothscale(pygame.image.load('images/pipboydistorteffectmap.png'), (config.WIDTH, self.distortLineHeight))
-            self.distortLine = self.distortLine.convert()
-            self.distortY = -self.distortLineHeight
-            self.distortSpeed = (config.HEIGHT / 40)
-            self.overlayFrames = []
+        #     self.distortLineHeight = (config.HEIGHT // 4)
+        #     self.distortLine = pygame.transform.smoothscale(pygame.image.load('images/pipboydistorteffectmap.png'), (config.WIDTH, self.distortLineHeight))
+        #     self.distortLine = self.distortLine.convert()
+        #     self.distortY = -self.distortLineHeight
+        #     self.distortSpeed = (config.HEIGHT / 40)
+        #     self.overlayFrames = []
 
-            print("START")
+        #     print("START")
 
-            cmdLine = CmdLineClass(self)
+        #     cmdLine = CmdLineClass(self)
 
-            bootPrintQueue = [
-                "WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK",
-                ">SET TERMINAL/INQUIRE",
-                "",
-                "RIT-V300",
-                "",
-                ">SET FILE/PROTECTION=OWNER:RWED ACCOUNTS.F",
-                ">SET HALT RESTART/MAINT",
-                "",
-                "Initializing Robco Industries(TM) MF Boot Agent v2.3.0",
-                "RETROS BIOS",
-                "RBIOS-4.02.08.00 52EE5.E7.E8",
-                "Copyright 2201-2203 Robco Ind.",
-                "Uppermem: 64 KB",
-                "Root (5A8)",
-                "Maintenance Mode",
-                "",
-                ">RUN DEBUG/ACCOUNTS.F",
-                "**cls",
-                "ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM",
-                "COPYRIGHT 2075-2077 ROBCO INDUSTRIES",
-                "",
-            ]
+        #     bootPrintQueue = [
+        #         "WELCOME TO ROBCO INDUSTRIES (TM) TERMLINK",
+        #         ">SET TERMINAL/INQUIRE",
+        #         "",
+        #         "RIT-V300",
+        #         "",
+        #         ">SET FILE/PROTECTION=OWNER:RWED ACCOUNTS.F",
+        #         ">SET HALT RESTART/MAINT",
+        #         "",
+        #         "Initializing Robco Industries(TM) MF Boot Agent v2.3.0",
+        #         "RETROS BIOS",
+        #         "RBIOS-4.02.08.00 52EE5.E7.E8",
+        #         "Copyright 2201-2203 Robco Ind.",
+        #         "Uppermem: 64 KB",
+        #         "Root (5A8)",
+        #         "Maintenance Mode",
+        #         "",
+        #         ">RUN DEBUG/ACCOUNTS.F",
+        #         "**cls",
+        #         "ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM",
+        #         "COPYRIGHT 2075-2077 ROBCO INDUSTRIES",
+        #         "",
+        #     ]
 
-            # Print Robco boot-up text, interleaving lines with overlay-frame generation:
-            lineNum = 0
-            canPrint = True
-            genOverlays = True
-            while (canPrint or genOverlays):
-                willPrint = (lineNum < len(bootPrintQueue))
-                if canPrint:
-                    thisLine = bootPrintQueue[lineNum]
-                    cmdLine.printText(thisLine)
+        #     # Print Robco boot-up text, interleaving lines with overlay-frame generation:
+        #     lineNum = 0
+        #     canPrint = True
+        #     genOverlays = True
+        #     while (canPrint or genOverlays):
+        #         willPrint = (lineNum < len(bootPrintQueue))
+        #         if canPrint:
+        #             thisLine = bootPrintQueue[lineNum]
+        #             cmdLine.printText(thisLine)
 
-                    lineNum += 1
-                    canPrint = (lineNum < len(bootPrintQueue))
+        #             lineNum += 1
+        #             canPrint = (lineNum < len(bootPrintQueue))
 
-                # Generate overlays until all required frames are done:
-                if genOverlays:
-                    if (self.distortY < config.HEIGHT):
-                        # Use scanlines as base:
-                        thisFrame = self.scanLines.convert()
+        #         # Generate overlays until all required frames are done:
+        #         if genOverlays:
+        #             if (self.distortY < config.HEIGHT):
+        #                 # Use scanlines as base:
+        #                 thisFrame = self.scanLines.convert()
 
-                        # Add animated distortion-line:
-                        thisFrame.blit(self.distortLine, (0, self.distortY), None, pygame.BLEND_RGB_ADD)
+        #                 # Add animated distortion-line:
+        #                 thisFrame.blit(self.distortLine, (0, self.distortY), None, pygame.BLEND_RGB_ADD)
 
-                        # Tint screen:
-                        thisFrame.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
+        #                 # Tint screen:
+        #                 thisFrame.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
 
-                        thisFrame = thisFrame.convert()
-                        self.overlayFrames.append(thisFrame)
+        #                 thisFrame = thisFrame.convert()
+        #                 self.overlayFrames.append(thisFrame)
 
-                        self.distortY += self.distortSpeed
-                    else:
-                        genOverlays = False
+        #                 self.distortY += self.distortSpeed
+        #             else:
+        #                 genOverlays = False
 
-            self.animDelayFrames = len(self.overlayFrames)
-            self.overlayFramesCount = (2 * self.animDelayFrames)
-            self.frameNum = 0
+        #     self.animDelayFrames = len(self.overlayFrames)
+        #     self.overlayFramesCount = (2 * self.animDelayFrames)
+        #     self.frameNum = 0
 
-            print("END GENERATE")
+        #     print("END GENERATE")
 
-            # Initial map-downloads:
-            cmdLine.printText(">MAPS.DOWNLOAD INIT")
-            cmdLine.printText("\tDownloading Local map...")
+        #     # Initial map-downloads:
+        #     cmdLine.printText(">MAPS.DOWNLOAD INIT")
+        #     cmdLine.printText("\tDownloading Local map...")
 
-            cmdLine.printText("\tDownloading World map...")
-            if config.SOUND_ENABLED:
-                pygame.mixer.Sound('sounds/start.wav').play()
+        #     cmdLine.printText("\tDownloading World map...")
+        #     if config.SOUND_ENABLED:
+        #         pygame.mixer.Sound('sounds/start.wav').play()
 
-            if config.SOUND_ENABLED:
-                pygame.mixer.Sound('sounds/stop.wav').play()
+        #     if config.SOUND_ENABLED:
+        #         pygame.mixer.Sound('sounds/stop.wav').play()
 
-            cmdLine.printText(">PIP-BOY.INIT")
+        #     cmdLine.printText(">PIP-BOY.INIT")
 
-            # Show Pip-Boy logo!
-            if not config.QUICKLOAD:
-                self.showBootLogo()
+        #     # Show Pip-Boy logo!
+        #     if not config.QUICKLOAD:
+        #         self.showBootLogo()
 
-            if config.SOUND_ENABLED:
-                pygame.mixer.Sound('sounds/start.wav').play()
-            print("END INIT PROCESS")
+        #     if config.SOUND_ENABLED:
+        #         pygame.mixer.Sound('sounds/start.wav').play()
+        #     print("END INIT PROCESS")
 
 
     # Show bootup-logo, play sound:
