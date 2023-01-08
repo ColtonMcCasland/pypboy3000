@@ -31,6 +31,7 @@ Sources:
         - sudo apt-get install python3-pygame
 
     3. Clone the pip boy git repo in /home/pi/
+        git clone https://github.com/ColtonMcCasland/pypboy3000
 
     4. Follow option 2 in this link to create a script to run the pygame: https://www.makeuseof.com/how-to-run-a-raspberry-pi-program-script-at-startup/
 
