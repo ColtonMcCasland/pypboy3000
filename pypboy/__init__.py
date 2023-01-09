@@ -36,6 +36,9 @@ class BaseModule(game.EntityGroup):
         self.add(self.footer)
 
         self.switch_submodule(0)
+        
+        if config.GPIO_AVAILABLE:
+            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
 
         self.action_handlers = {
             "pause": self.handle_pause,
@@ -134,9 +137,6 @@ class SubModule(game.EntityGroup):
     def __init__(self, parent, *args, **kwargs):
         super(SubModule, self).__init__()
         self.parent = parent
-        
-        if config.GPIO_AVAILABLE:
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
 
         self.action_handlers = {
             "pause": self.handle_pause,
