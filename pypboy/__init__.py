@@ -38,10 +38,10 @@ class BaseModule(game.EntityGroup):
         self.switch_submodule(0)
         
         if config.GPIO_AVAILABLE:
-            GPIO.setup(24, GPIO.OUT)
+            GPIO.setup(18, GPIO.OUT)
             
         if config.GPIO_AVAILABLE:
-            GPIO.output(24, GPIO.HIGH)
+            GPIO.output(18, GPIO.HIGH)
             
         
 
