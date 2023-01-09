@@ -37,11 +37,11 @@ class BaseModule(game.EntityGroup):
 
         self.switch_submodule(0)
         
-        if config.GPIO_AVAILABLE:
-            GPIO.setup(18, GPIO.OUT)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.setup(18, GPIO.OUT)
             
-        if config.GPIO_AVAILABLE:
-            GPIO.output(18, GPIO.HIGH)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.output(18, GPIO.HIGH)
             
         
 
@@ -80,7 +80,6 @@ class BaseModule(game.EntityGroup):
     def handle_action(self, action, value=0):
         if action.startswith("knob_"):
             if config.GPIO_AVAILABLE:
-                # NEEDS TWEAKING: GLITCHY INTERFACE EXPERIENCE WITH KNOB
                 if action.startswith("knob_"):
                     if action == "knob_down":
                         self.currentSubmodule -= 1
