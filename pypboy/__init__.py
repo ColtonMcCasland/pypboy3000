@@ -23,8 +23,8 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
         
-        if config.GPIO_AVAILABLE:
-            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
 
 
         self.pypboy = boy
@@ -104,15 +104,15 @@ class BaseModule(game.EntityGroup):
         self.paused = True
         self.currentSubmodule = 0
         self.switch_submodule(0)
-        if config.GPIO_AVAILABLE:
-            GPIO.output(self.GPIO_LED_ID, GPIO.LOW)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.output(self.GPIO_LED_ID, GPIO.LOW)
 
     def handle_resume(self):
         self.paused = False
         self.currentSubmodule = 0
         self.switch_submodule(0)
-        if config.GPIO_AVAILABLE:
-            GPIO.output(self.GPIO_LED_ID, GPIO.HIGH)
+        # if config.GPIO_AVAILABLE:
+        #     GPIO.output(self.GPIO_LED_ID, GPIO.HIGH)
         if config.SOUND_ENABLED:
             self.module_change_sfx.play()
 
