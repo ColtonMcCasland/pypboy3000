@@ -23,7 +23,8 @@ class BaseModule(game.EntityGroup):
     def __init__(self, boy, *args, **kwargs):
         super(BaseModule, self).__init__()
         
-        PIO.setup(self.GPIO_LED_ID, GPIO.OUT)
+        if config.GPIO_AVAILABLE:
+            GPIO.setup(self.GPIO_LED_ID, GPIO.OUT)
 
 
         self.pypboy = boy
@@ -111,7 +112,6 @@ class BaseModule(game.EntityGroup):
         self.currentSubmodule = 0
         self.switch_submodule(0)
         if config.GPIO_AVAILABLE:
-            GPIO.
             GPIO.output(self.GPIO_LED_ID, True)
         if config.SOUND_ENABLED:
             self.module_change_sfx.play()
