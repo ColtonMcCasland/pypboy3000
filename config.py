@@ -71,7 +71,7 @@ GPIO_ACTIONS = {
 }
 
 # LEDs
-# pin 23, 24, 4 
+# pin 18, 23, 24,
 
 MAP_ICONS = {
     "camp": 		pygame.image.load('images/map_icons/camp.png'),

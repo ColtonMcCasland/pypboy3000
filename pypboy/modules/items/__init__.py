@@ -13,7 +13,7 @@ if config.GPIO_AVAILABLE:
 class Module(BaseModule):
 
 	label = "ITEMS"
-	GPIO_LED_ID = 4
+	GPIO_LED_ID = 18
 	
 	def __init__(self, *args, **kwargs):
      
