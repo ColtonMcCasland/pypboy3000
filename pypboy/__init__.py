@@ -102,14 +102,14 @@ class BaseModule(game.EntityGroup):
         self.currentSubmodule = 0
         self.switch_submodule(0)
         # if config.GPIO_AVAILABLE:
-        #     GPIO.output(self.GPIO_LED_ID, GPIO.LOW)
+        # GPIO.output(self.GPIO_LED_ID, False)
 
     def handle_resume(self):
         self.paused = False
         self.currentSubmodule = 0
         self.switch_submodule(0)
         # if config.GPIO_AVAILABLE:
-        #     GPIO.output(self.GPIO_LED_ID, GPIO.HIGH)
+        #     GPIO.output(self.GPIO_LED_ID, True)
         if config.SOUND_ENABLED:
             self.module_change_sfx.play()
 
@@ -134,7 +134,6 @@ class SubModule(game.EntityGroup):
     def __init__(self, parent, *args, **kwargs):
         super(SubModule, self).__init__()
         self.parent = parent
-        
 
         self.action_handlers = {
             "pause": self.handle_pause,
