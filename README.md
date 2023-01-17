@@ -30,6 +30,8 @@ Sources:
     2. Download pygame for Debian:
         - sudo apt-get install python3-pygame
 
+    3. Follow this link and instructions on sdl: https://learn.adafruit.com/adafruit-pitft-3-dot-5-touch-screen-for-raspberry-pi/faq?view=all#ensure-you-are-running-sdl-1-dot-2-2859156
+
     3. Clone the pip boy git repo in /home/pi/
         git clone https://github.com/ColtonMcCasland/pypboy3000
 
