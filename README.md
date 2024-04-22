@@ -10,8 +10,7 @@ Sources:
 
 - Credit to sabas1080's code I orignially based my work on: https://github.com/sabas1080/pypboy
 
-
-- 3d Model: https://ytec3d.com/pip-boy/
+- Credit to ytec3d for 3d Model: https://ytec3d.com/pip-boy/
 
 - Wiring diagram: ![](Finished_product_Images/raspberry_pi_pipboy-circuit-diagram.jpeg)
 
