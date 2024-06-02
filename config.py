@@ -1,9 +1,9 @@
 import pygame
 
-PLAYERNAME = "Markuspwn"
+PLAYERNAME = "Mobby"
 PLAYERLEVEL = 10
-WIDTH = 480
-HEIGHT = 320
+WIDTH = 800
+HEIGHT = 480
 
 minSwipe = 50
 maxClick = 15
