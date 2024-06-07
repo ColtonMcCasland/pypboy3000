@@ -2,7 +2,7 @@ import pygame
 
 PLAYERNAME = "Mobby"
 PLAYERLEVEL = 10
-WIDTH = 800
+WIDTH = 720
 HEIGHT = 480
 
 minSwipe = 50
